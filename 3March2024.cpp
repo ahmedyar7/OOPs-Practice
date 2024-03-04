@@ -19,7 +19,12 @@ public:
         fuelType = fType;
     }
 
-    void DisplayInfo()
+    virtual int CalculateTax()
+    {
+        return 0;
+    }
+
+    virtual void DisplayInfo()
     {
         cout << "Make: " << make << endl;
         cout << "Model: " << model << endl;
@@ -34,12 +39,22 @@ public:
     string color;
 
     // Defining the constructor
-    Car(string makeVehicle, string vehicleModel, int vehicleYear, string fType) : Vehicle(makeVehicle, vehicleModel, vehicleYear, fType){};
-
-    void DisplayInfo()
+    Car(string makeVehicle, string vehicleModel, int vehicleYear, string fType, int numberDoors, string carColor) : Vehicle(makeVehicle, vehicleModel, vehicleYear, fType)
     {
+        num_doors = numberDoors;
+        color = carColor;
+    }
+
+    void DisplayInfo() override
+    {
+        Vehicle ::DisplayInfo();
         cout << "Number Of Doors: " << num_doors << endl;
         cout << "Color Of Car: " << color << endl;
+    }
+
+    int CalculateTax() override
+    {
+        return 0;
     }
 };
 
@@ -50,21 +65,29 @@ public:
     bool hasSideCar;
     string licenseType;
 
-    void DisplayInfo()
+    MotorCycle(string makeVehicle, string vehicleModel, int vehicleYear, string fType, int numberDoors, string bikeLicense, bool sideCar) : Vehicle(makeVehicle, vehicleModel, vehicleYear, fType)
     {
+        hasSideCar = sideCar;
+        licenseType = bikeLicense;
+    }
+
+    void DisplayInfo() override
+    {
+        Vehicle ::DisplayInfo();
         cout << "License Type: " << licenseType << endl;
+    }
+
+    int CalculateTax() override
+    {
+        return 0;
     }
 };
 
 int main()
 {
     Vehicle vehicle("Mercedes", "CD2023", 2004, "Petrol");
-    Car car;
-    MotorCycle motorcycle;
+    Car car("Mercedes", "CD2023", 2004, "Petrol", 4, "Black");
+    MotorCycle motorcycle("Mercedes", "CD2023", 2004, "Petrol", 4, "GPA-081", true);
 
-    vehicle.DisplayInfo();
-    cout << endl;
-    car.DisplayInfo();
-    cout << endl;
     motorcycle.DisplayInfo();
 }
