@@ -66,7 +66,7 @@ public:
     {
         get_rollnumber();
         get_marks();
-        double percentAge = ((maths + physics) / 2) * 100;
+        double percentAge = ((maths + physics) / 2);
         cout << "Your Percentage is " << percentAge << "%" << endl;
     }
 };
