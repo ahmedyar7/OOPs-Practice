@@ -50,11 +50,11 @@
 
 //     Complex operator+(Complex obj)
 //     {
-//         Complex temp;
-//         temp.real = real + obj.real;
-//         temp.img = img + obj.img;
+//         Complex value;
+//         value.real = real + obj.real;
+//         value.img = img + obj.img;
 
-//         return temp;
+//         return value;
 //     }
 //     void output()
 //     {
@@ -394,18 +394,234 @@
 
 // Create a class String to represent strings and overload the + operator to concatenate two strings.
 
+// #include <iostream>
+// #include <string.h>
+// using namespace std;
+
+// class String
+// {
+// private:
+//     char s1[25], s2[25];
+
+// public:
+//     String(char str1[], char str2[])
+//     {
+//         strcpy(this->s1, str1);
+//         strcpy(this->s2, str2);
+//     }
+//     void operator+()
+//     {
+//         cout << "Contatenation: " << strcpy(s1, s2);
+//     }
+// };
+
+// int main()
+// {
+//     char str1[] = "Ahmed";
+//     char str2[] = "Yar";
+
+//     String a1(str1, str2);
+
+//     +a1;
+// }
+
+// Define a class Matrix to represent matrices and overload the + operator for matrix addition.
+
+// Define a class Rectangle to represent rectangles with overloaded == and != operators to compare two rectangles for equality.
+
+// #include <iostream>
+// using namespace std;
+
+// class Rectangle
+// {
+// private:
+//     int l;
+//     int w;
+
+// public:
+//     Rectangle(int l, int w)
+//     {
+//         this->l = l;
+//         this->w = w;
+//     }
+
+//     bool operator==(Rectangle obj) const
+//     {
+//         return l == obj.l && w == obj.w;
+//     }
+//     bool operator!=(Rectangle obj) const
+//     {
+//         return !(*this == obj);
+//     }
+// };
+// int main()
+// {
+//     Rectangle r1(2, 2);
+//     Rectangle r2(2, 2);
+
+//     if (r1 == r2)
+//     {
+//         cout << "they are equal " << endl;
+//     }
+//     else
+//     {
+//         cout << "They are not equal" << endl;
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Rectangle
+// {
+// private:
+//     int length;
+//     int width;
+
+// public:
+//     Rectangle(int length, int width)
+//     {
+//         this->length = length;
+//         this->width = width;
+//     }
+//     // Overloading the == operator
+//     bool operator==(Rectangle rec)
+//     {
+//         return length == rec.length && width == rec.width;
+//     }
+//     // Overloading the != operator
+//     bool operator!=(Rectangle rec)
+//     {
+//         return !(*this == rec);
+//     }
+// };
+// int main()
+// {
+//     Rectangle rec1(2, 2);
+//     Rectangle rec2(2, 2);
+
+//     if (rec1 == rec2)
+//         cout << "They are equal " << endl;
+//     else
+//         cout << "They are equal " << endl;
+// }
+
+// Implement a class Temperature to represent temperatures with overloaded > and < operators to compare temperatures.
+
+// #i
+
+// #include <iostream>
+// #include <string>
+
+// using namespace std;
+
+// class Temperature
+// {
+// private:
+//     int value;
+//     char scale;
+
+//     int convert_into_celsius() const
+//     {
+//         if (scale == 'F')
+//         {
+//             return (value - 32) * 5 / 9;
+//         }
+//         return value;
+//     }
+
+// public:
+//     Temperature(int value, char scale)
+//     {
+//         this->value = value;
+//         this->scale = scale;
+//     }
+
+//     bool operator<(const Temperature obj)
+//     {
+//         return convert_into_celsius() < obj.convert_into_celsius();
+//     }
+//     bool operator>(const Temperature obj)
+//     {
+//         return convert_into_celsius() > obj.convert_into_celsius();
+//     }
+// };
+// int main()
+// {
+//     Temperature t1(100, 'F');
+//     Temperature t2(100, 'C');
+
+//     if (t1 > t2)
+//         cout << "True";
+//     else
+//         cout << "False";
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Temperature
+// {
+// private:
+//     int value;
+//     char scale;
+
+//     int ConverIntoCelsius() const
+//     {
+//         if (scale == 'F')
+//         {
+//             return (value - 32) * 5 / 9;
+//         }
+//         return value;
+//     }
+
+// public:
+//     Temperature(int value, char scale)
+//     {
+//         this->value = value;
+//         this->scale = scale;
+//     }
+
+//     // Operator overloading
+//     bool operator<(const Temperature &obj)
+//     {
+//         return ConverIntoCelsius() < obj.ConverIntoCelsius();
+//     }
+//     bool operator>(const Temperature &obj)
+//     {
+//         return ConverIntoCelsius() > obj.ConverIntoCelsius();
+//     }
+// };
+
+// int main()
+// {
+//     Temperature t1(10, 'F');
+//     Temperature t2(100, 'C');
+
+//     if (t1 < t2)
+//     {
+//         cout << "True" << endl;
+//     }
+//     else
+//         cout << "False" << endl;
+// }
+
 #include <iostream>
-#include <string>
+#include <algorithm>
+#include <vector>
+
 using namespace std;
 
-class String
+class SortingAlgorithm
 {
-private:
-    string a;
-
 public:
-    String(string a)
+    void operator()(vector<int> &arr) const
     {
-        this->a = a;
+        bubbleSort(arr);
+    }
+
+private:
+    void bubbleSort(vector<int> &arr) const
+    {
     }
 };
