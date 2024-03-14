@@ -605,23 +605,163 @@
 //     else
 //         cout << "False" << endl;
 // }
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// class Vector
+// {
+// private:
+//     int x, y;
+
+// public:
+//     Vector(int x, int y)
+//     {
+//         this->x = x;
+//         this->y = y;
+//     }
+//     Vector operator+(Vector vec)
+//     {
+//         return Vector(x + vec.x, y + vec.y);
+//     }
+//     Vector operator-(Vector vec)
+//     {
+//         return Vector(x - vec.x, y - vec.y);
+//     }
+//     void display()
+//     {
+//         cout << "(" << x << ", " << y << ")" << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Vector v1(10, 29);
+//     Vector v2(20, 30);
+
+//     Vector result = v1 + v2;
+//     Vector result2 = v1 - v2;
+//     result.display();
+//     result2.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Counter
+// {
+// private:
+//     int count = 0;
+
+// public:
+//     Counter(int count)
+//     {
+//         this->count = count;
+//     }
+//     void operator++()
+//     {
+//         count++;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Counter c(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         ++c;
+//         c.display();
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Rectangle
+// {
+// private:
+//     int length;
+//     int width;
+
+// public:
+//     Rectangle(int length, int width)
+//     {
+//         this->length = length;
+//         this->width = width;
+//     }
+//     bool operator==(Rectangle rec)
+//     {
+//         return length == rec.length && width == rec.width;
+//     }
+//     bool operator<(Rectangle rec)
+//     {
+//         return length < rec.length && width < rec.width;
+//     }
+// };
+// int main()
+// {
+//     Rectangle rec1(10, 20);
+//     Rectangle rec2(2, 3);
+
+//     if (rec1 < rec2)
+//     {
+//         cout << "True" << endl;
+//     }
+//     else
+//         cout << "False";
+
+// if (rec1 == rec2)
+// {
+//     cout << "They are equal ";
+// }
+// else
+//     cout << "They are not equal " << endl;
+// }
 
 #include <iostream>
-#include <algorithm>
 #include <vector>
-
+#include <algorithm>
 using namespace std;
 
 class SortingAlgorithm
 {
+private:
+    void bubbleSort(vector<int> &arr)
+    {
+        int n = arr.size();
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                if (arr[j] < arr[i])
+                {
+                    int temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+        }
+    }
+
 public:
     void operator()(vector<int> &arr) const
     {
         bubbleSort(arr);
     }
-
-private:
-    void bubbleSort(vector<int> &arr) const
-    {
-    }
 };
+
+int main()
+{
+    SortingAlgorithm sorter;
+    vector<int> v1 = {2, 4, 2, 6, 4};
+    sorter(v1);
+
+    for (auto array : v1)
+    {
+        cout << array << " ";
+    }
+}
