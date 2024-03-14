@@ -721,47 +721,227 @@
 //     cout << "They are not equal " << endl;
 // }
 
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// using namespace std;
+
+// class SortingAlgorithm
+// {
+// private:
+//     void bubbleSort(vector<int> &arr)
+//     {
+//         int n = arr.size();
+
+//         for (int i = 0; i < n - 1; i++)
+//         {
+//             for (int j = i + 1; j < n; j++)
+//             {
+//                 if (arr[j] < arr[i])
+//                 {
+//                     int temp = arr[j];
+//                     arr[j] = arr[i];
+//                     arr[i] = temp;
+//                 }
+//             }
+//         }
+//     }
+
+// public:
+//     void operator()(vector<int> &arr) const
+//     {
+//         bubbleSort(arr);
+//     }
+// };
+
+// int main()
+// {
+//     SortingAlgorithm sorter;
+//     vector<int> v1 = {2, 4, 2, 6, 4};
+//     sorter(v1);
+
+//     for (auto array : v1)
+//     {
+//         cout << array << " ";
+//     }
+// }
+
+// #include <iostream>
+// #include <string>
+
+// using namespace std;
+
+// class Temperature
+// {
+// private:
+//     int value;
+//     char scale;
+
+//     int convertToCelsius()
+//     {
+//         if (scale == 'F')
+//         {
+//             return (value - 32) * 5 / 9;
+//         }
+//         else
+//             return value;
+//     }
+
+// public:
+//     Temperature(int value, char scale)
+//     {
+//         this->value = value;
+//         this->scale = scale;
+//     }
+//     bool operator<(Temperature temperature)
+//     {
+//         return convertToCelsius() < temperature.convertToCelsius();
+//     }
+// };
+
+// int main()
+// {
+//     Temperature t2(120, 'F');
+//     Temperature t1(150, 'C');
+
+//     if (t1 < t2)
+//         cout << "TRUE" << endl;
+//     else
+//         cout << "FALSE" << endl;
+// }
+
+// overloading the insertion operator
+
+// #include <iostream>
+// using namespace std;
+
+// class Input
+// {
+// private:
+//     string name;
+//     int age;
+
+// public:
+//     Input(string name, int age)
+//     {
+//         this->name = name;
+//         this->age = age;
+//     }
+//     friend ostream &operator<<(ostream &output, Input &input)
+//     {
+//         output << "Name: " << input.name << endl;
+//         output << "Age: " << input.age << endl;
+//         return output;
+//     }
+//     void display()
+//     {
+//         cout << *this;
+//     }
+// };
+// int main()
+// {
+//     Input i("AhmedYar", 19);
+//     i.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class InsertionOperator
+// {
+// private:
+//     string name;
+//     int age;
+
+// public:
+//     // InsertionOperator(string name, int age)
+//     // {
+//     //     this->name = name;
+//     //     this->age = age;
+//     // }
+
+//     friend istream &operator>>(istream &input, InsertionOperator &io)
+//     {
+//         input >> io.name >> io.age;
+//         return input;
+//     }
+// };
+
+// int main()
+// {
+//     InsertionOperator io;
+//     cout << "Enter Your Name: " << endl;
+//     cout << "Enter Your Age: ";
+//     cin >> io;
+// }
+
+// Representing vector form using the exersion operator in c++
+
+// #include <iostream>
+// using namespace std;
+
+// class Vector
+// {
+// private:
+//     int x;
+//     int y;
+
+// public:
+//     Vector(int x, int y)
+//     {
+//         this->x = x;
+//         this->y = y;
+//     }
+//     // Operator overloading
+//     friend ostream &operator<<(ostream &output, Vector &vec)
+//     {
+//         output << "(" << vec.x << ", " << vec.y << ")" << endl;
+//         return output;
+//     }
+//     void display()
+//     {
+//         cout << *this << endl;
+//     }
+// };
+// int main()
+// {
+//     Vector v1(20, 90);
+//     v1.display();
+// }
+
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-class SortingAlgorithm
+class Operator_insertion_exersion
 {
 private:
-    void bubbleSort(vector<int> &arr)
-    {
-        int n = arr.size();
-
-        for (int i = 0; i < n - 1; i++)
-        {
-            for (int j = i + 1; j < n; j++)
-            {
-                if (arr[j] < arr[i])
-                {
-                    int temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
-            }
-        }
-    }
+    string name;
+    int age;
 
 public:
-    void operator()(vector<int> &arr) const
+    friend istream &operator>>(istream &in, Operator_insertion_exersion &input)
     {
-        bubbleSort(arr);
+        in >> input.name >> input.age;
+        return in;
+    }
+    friend ostream &operator<<(ostream &out, const Operator_insertion_exersion &output)
+    {
+        out << "Name: " << output.name << endl;
+        out << "Age: " << output.age << endl;
+
+        return out;
+    }
+    void display()
+    {
+        cout << *this;
     }
 };
 
 int main()
 {
-    SortingAlgorithm sorter;
-    vector<int> v1 = {2, 4, 2, 6, 4};
-    sorter(v1);
+    Operator_insertion_exersion op;
+    cout << "Enter Name & Age: ";
+    cin >> op;
 
-    for (auto array : v1)
-    {
-        cout << array << " ";
-    }
+    op.display();
 }
