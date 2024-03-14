@@ -909,39 +909,39 @@
 //     v1.display();
 // }
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class Operator_insertion_exersion
-{
-private:
-    string name;
-    int age;
+// class Operator_insertion_exersion
+// {
+// private:
+//     string name;
+//     int age;
 
-public:
-    friend istream &operator>>(istream &in, Operator_insertion_exersion &input)
-    {
-        in >> input.name >> input.age;
-        return in;
-    }
-    friend ostream &operator<<(ostream &out, const Operator_insertion_exersion &output)
-    {
-        out << "Name: " << output.name << endl;
-        out << "Age: " << output.age << endl;
+// public:
+//     friend istream &operator>>(istream &in, Operator_insertion_exersion &input)
+//     {
+//         in >> input.name >> input.age;
+//         return in;
+//     }
+//     friend ostream &operator<<(ostream &out, const Operator_insertion_exersion &output)
+//     {
+//         out << "Name: " << output.name << endl;
+//         out << "Age: " << output.age << endl;
 
-        return out;
-    }
-    void display()
-    {
-        cout << *this;
-    }
-};
+//         return out;
+//     }
+//     void display()
+//     {
+//         cout << *this;
+//     }
+// };
 
-int main()
-{
-    Operator_insertion_exersion op;
-    cout << "Enter Name & Age: ";
-    cin >> op;
+// int main()
+// {
+//     Operator_insertion_exersion op;
+//     cout << "Enter Name & Age: ";
+//     cin >> op;
 
-    op.display();
-}
+//     op.display();
+// }
