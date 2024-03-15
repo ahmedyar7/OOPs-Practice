@@ -1046,37 +1046,37 @@
 //     return 0;
 // }
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class Student
-{
-private:
-    string name;
-    int age;
+// class Student
+// {
+// private:
+//     string name;
+//     int age;
 
-public:
-    // input operator overloading
-    friend istream &operator>>(istream &in, Student &std)
-    {
-        in >> std.name >> std.age;
-    }
-    friend ostream &operator<<(ostream &out, Student &std)
-    {
-        out << std.name << " " << std.age << endl;
-    }
-    void display()
-    {
-        cout << *this;
-    }
-};
+// public:
+//     // input operator overloading
+//     friend istream &operator>>(istream &in, Student &std)
+//     {
+//         in >> std.name >> std.age;
+//     }
+//     friend ostream &operator<<(ostream &out, Student &std)
+//     {
+//         out << std.name << " " << std.age << endl;
+//     }
+//     void display()
+//     {
+//         cout << *this;
+//     }
+// };
 
-int main()
-{
-    cout << "Enter the name and age";
-    Student s;
-    cin >> s;
-    s.display();
+// int main()
+// {
+//     cout << "Enter the name and age";
+//     Student s;
+//     cin >> s;
+//     s.display();
 
-    return 0;
-}
+//     return 0;
+// }

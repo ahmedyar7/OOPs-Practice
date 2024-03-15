@@ -174,85 +174,165 @@
 
 // Implement a class Matrix to represent a 3x3 matrix.Define a friend function Matrix addMatrices(Matrix &m1, Matrix &m2) to add two matrices and return the result.
 
+// #include <iostream>
+// using namespace std;
+
+// class Matrix
+// {
+// private:
+//     int array[3][3];
+
+// public:
+//     friend Matrix addMatrix(Matrix &m1, Matrix &m2);
+//     friend Matrix subtractMatrix(Matrix &m1, Matrix &m2);
+//     void setData()
+//     {
+//         cout << "Enter the elements" << endl;
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 cin >> array[i][j];
+//             }
+//         }
+//     }
+//     void printData()
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 cout << array[i][j] << "  ";
+//             }
+//             cout << " \n\n";
+//         }
+//     }
+// };
+
+// Matrix addMatrix(Matrix &m1, Matrix &m2)
+// {
+//     Matrix result;
+//     int sum[3][3];
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             result.array[i][j] = m1.array[i][j] + m2.array[i][j];
+//         }
+//     }
+//     return Matrix(result);
+// }
+
+// Matrix subtractMatrix(Matrix &m1, Matrix &m2)
+// {
+//     Matrix result;
+//     int subtract[3][3];
+
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             result.array[i][j] = m1.array[i][j] - m2.array[i][j];
+//         }
+//     }
+// }
+
+// int main()
+// {
+
+//     Matrix m1, m2, result, result2;
+
+//     m1.setData();
+//     m1.printData();
+
+//     m2.setData();
+//     m2.printData();
+
+//     result = addMatrix(m1, m2);
+//     result.printData();
+
+//     result2 = subtractMatrix(m1, m2);
+//     result2.printData();
+
+//     return 0;
+// }
+
+// Write a C++ program to implement a class called BankAccount with private members balance, accountNumber, and ownerName. Implement a friend function named transferFunds that transfers funds between two BankAccount objects.
+
 #include <iostream>
 using namespace std;
 
-class Matrix
+class BankAccount
 {
 private:
-    int array[3][3];
+    string name;
+    double balance;
+    string accountNumber;
 
 public:
-    friend Matrix addMatrix(Matrix &m1, Matrix &m2);
-    friend Matrix subtractMatrix(Matrix &m1, Matrix &m2);
-    void setData()
+    friend BankAccount deposit(BankAccount &obj, int amount);
+    friend BankAccount withdraw(BankAccount &obj, int amount);
+    friend BankAccount transfer(BankAccount &obj1, BankAccount &obj, int amount);
+
+    BankAccount(string name, double balance, string accountNumber)
     {
-        cout << "Enter the elements" << endl;
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                cin >> array[i][j];
-            }
-        }
+        this->name = name;
+        this->balance = balance;
+        this->accountNumber = accountNumber;
     }
-    void printData()
+
+    void display()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                cout << array[i][j] << "  ";
-            }
-            cout << " \n\n";
-        }
+        cout << "Name: " << name << endl;
+        cout << "Balance: " << balance << endl;
+        cout << "Account Number: " << accountNumber << endl;
     }
 };
+// Friend Function
 
-Matrix addMatrix(Matrix &m1, Matrix &m2)
+BankAccount deposit(BankAccount &obj, int amount)
 {
-    Matrix result;
-    int sum[3][3];
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            result.array[i][j] = m1.array[i][j] + m2.array[i][j];
-        }
-    }
-    return Matrix(result);
+    obj.balance += amount;
+    cout << obj.balance << endl;
 }
-
-Matrix subtractMatrix(Matrix &m1, Matrix &m2)
+BankAccount withdraw(BankAccount &obj, int amount)
 {
-    Matrix result;
-    int subtract[3][3];
-
-    for (int i = 0; i < 3; i++)
+    if (amount <= obj.balance)
     {
-        for (int j = 0; j < 3; j++)
-        {
-            result.array[i][j] = m1.array[i][j] - m2.array[i][j];
-        }
+        obj.balance -= amount;
+        cout << obj.balance << endl;
+    }
+    else
+        cout << "This transaction in not possible " << endl;
+}
+BankAccount transfer(BankAccount &obj1, BankAccount &obj2, int amount)
+{
+    if (amount <= obj1.balance)
+    {
+        obj1.balance -= amount;
+        obj2.balance += amount;
+        cout << "Amount Transfered from acc1 to acc2 " << endl;
+        cout << obj2.balance << endl;
+    }
+    else if (amount <= obj2.balance)
+    {
+        obj2.balance -= amount;
+        obj1.balance += amount;
+        cout << "Amount Transfered from acc2 to acc1 " << endl;
+        cout << obj1.balance << endl;
     }
 }
 
 int main()
 {
 
-    Matrix m1, m2, result, result2;
+    BankAccount b1("Ahmed Yar", 100.0, "1001");
+    BankAccount b2("Asjaad ", 200.0, "1002");
 
-    m1.setData();
-    m1.printData();
+    transfer(b1, b2, 100);
 
-    m2.setData();
-    m2.printData();
-
-    result = addMatrix(m1, m2);
-    result.printData();
-
-    result2 = subtractMatrix(m1, m2);
-    result2.printData();
+    // deposit(b1, 100);
+    // withdraw(b1, 900);
 
     return 0;
 }
