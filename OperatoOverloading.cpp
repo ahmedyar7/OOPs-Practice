@@ -945,3 +945,138 @@
 
 //     op.display();
 // }
+
+//
+
+// #include <iostream>
+// using namespace std;
+
+// class Vector
+// {
+// private:
+//     int x, y;
+
+// public:
+//     Vector(int x, int y)
+//     {
+//         this->x = x;
+//         this->y = y;
+//     }
+//     // Insertion Operator overloading
+//     friend ostream &operator<<(ostream &out, Vector &vec)
+//     {
+//         out << "(" << vec.x << ", " << vec.y << ")" << endl;
+//     }
+//     // Addition function overloading
+//     Vector operator+(Vector &vec)
+//     {
+//         return Vector(x + vec.x, y + vec.y);
+//     }
+//     // Subtracion function overloading
+//     Vector operator-(Vector &vec)
+//     {
+//         return Vector(x - vec.x, y - vec.y);
+//     }
+//     // Division Operator Overloading
+//     Vector operator/(Vector &vec)
+//     {
+//         return Vector(x / vec.x, y / vec.y);
+//     }
+//     // Multiplication operator overloading
+//     Vector operator*(Vector &vec)
+//     {
+//         return Vector(x * vec.x, y * vec.y);
+//     }
+//     // Overloading the == Operator
+//     bool operator==(Vector &vec)
+//     {
+//         return (x == vec.x && y == vec.y);
+//     }
+//     // Overloading the != operator
+//     bool operator!=(Vector &vec)
+//     {
+//         return (x != vec.x || y != vec.y);
+//     }
+//     // overloading the  < sign
+//     bool operator<(Vector &vec)
+//     {
+//         return (x < vec.x && y < vec.y);
+//     }
+
+//     void display()
+//     {
+//         cout << *this;
+//     }
+// };
+
+// int main()
+// {
+//     // Object Making
+//     Vector v1(1, 1);
+//     Vector v2(2, 2);
+
+//     // Operator calling
+//     Vector add = v1 + v2;
+//     Vector subtract = v1 - v2;
+//     Vector divide = v1 / v2;
+//     Vector multiply = v1 * v2;
+
+//     // Method of display
+//     divide.display();
+//     add.display();
+//     subtract.display();
+//     multiply.display();
+
+//     // Relation operator overlaoding
+//     if (v1 == v2)
+//         cout << "True" << endl;
+//     else
+//         cout << "False" << endl;
+//     //
+//     if (v1 != v2)
+//         cout << "True" << endl;
+//     else
+//         cout << "False" << endl;
+//     //
+//     if (v1 < v2)
+//         cout << "True" << endl;
+//     else
+//         cout << "False" << endl;
+
+//     return 0;
+// }
+
+#include <iostream>
+using namespace std;
+
+class Student
+{
+private:
+    string name;
+    int age;
+
+public:
+    // input operator overloading
+    friend istream &operator>>(istream &in, Student &std)
+    {
+        in >> std.name >> std.age;
+    }
+    friend ostream &operator<<(ostream &out, Student &std)
+    {
+        out << std.name << " " << std.age << endl;
+    }
+    void display()
+    {
+        cout << *this;
+    }
+};
+
+int main()
+{
+    cout << "Enter the name and age";
+    Student s;
+    cin >> s;
+    s.display();
+
+    return 0;
+}
