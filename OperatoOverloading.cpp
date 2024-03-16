@@ -1363,23 +1363,122 @@
 // }
 
 // Post fix decrement
+// #include <iostream>
+// using namespace std;
+
+// class Counter
+// {
+// private:
+//     int count = 0;
+
+// public:
+//     Counter(int count) { this->count = count; }
+//     Counter operator--(int)
+//     {
+//         Counter temp(*this);
+//         count--;
+//         return temp;
+//     }
+//     int getValue()
+//     {
+//         return count;
+//     }
+// };
+// int main()
+// {
+//     Counter c(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         c--;
+//         cout << c.getValue() << endl;
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Counter
+// {
+// private:
+//     int count = 0;
+
+// public:
+//     Counter(int count)
+//     {
+//         this->count = count;
+//     }
+//     Counter operator--(int)
+//     {
+//         Counter temp(*this);
+//         count--;
+//         return temp;
+//     }
+//     int getcount() { return count; }
+// };
+// int main()
+// {
+//     Counter c(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         c--;
+//         cout << c.getcount() << endl;
+//     }
+// }
+// #include <iostream>
+// using namespace std;
+
+// class NOT
+// {
+// private:
+//     bool value;
+
+// public:
+//     NOT(bool value) { this->value = value; }
+
+//     NOT operator!()
+//     {
+//         return NOT(!value);
+//     }
+//     bool getValue() { return value; }
+// };
+// int main()
+// {
+//     NOT v1(true);
+//     NOT res = !v1;
+//     cout << res.getValue();
+// }
+
 #include <iostream>
 using namespace std;
 
-class Counter
+class Assigment
 {
 private:
-    int count = 0;
+    int value;
 
 public:
-    Counter(int count) { this->count = count; }
-    Counter operator--()
+    Assigment(int value) { this->value = value; }
+    Assigment(Assigment &obj) { value = obj.value; }
+
+    Assigment operator==(Assigment &o)
     {
-        Counter temp(*this);
-        Counter(count--);
+        if (this != &o)
+        {
+            value = o.value;
+        }
+        return *this;
     }
     int getValue()
     {
-        return count;
+        return value;
     }
 };
+int main()
+{
+    Assigment a1(10);
+    Assigment a2(100);
+
+    a1 = a2;
+
+    cout << "After Assignmet a1 = " << a1.getValue() << endl;
+}
