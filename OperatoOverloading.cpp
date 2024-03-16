@@ -1189,24 +1189,197 @@
 //     cout << res.getValue() << endl;
 // }
 
+// #include <iostream>
+// using namespace std;
+
+// class MyClass
+// {
+// private:
+//     bool value;
+
+// public:
+//     MyClass(bool value) { this->value = value; }
+//     MyClass operator&&(MyClass v) { return MyClass(value && v.value); }
+//     bool getValue() { return value; }
+// };
+// int main()
+// {
+//     MyClass m1(true);
+//     MyClass m2(true);
+
+//     MyClass result = m1 && m2;
+//     cout << result.getValue() << endl;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class MyClass
+// {
+// private:
+//     bool value;
+
+// public:
+//     MyClass(bool value) { this->value = value; }
+//     MyClass operator!() { return MyClass(!value); }
+//     bool getValue() { return value; }
+// };
+// int main()
+// {
+//     MyClass m(true);
+//     MyClass res = !m;
+//     cout << res.getValue() << endl;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class MyClass
+// {
+// private:
+//     int value;
+
+// public:
+//     MyClass(int value) { this->value = value; }  // Constructor
+//     MyClass(MyClass &obj) { value = obj.value; } // Copy Constructor
+
+//     // Operator Overloading
+//     MyClass &operator=(MyClass &m)
+//     {
+//         if (this != &m)
+//         {
+//             value = m.value;
+//         }
+//         return *this;
+//     }
+//     int getvalue()
+//     {
+//         return value;
+//     }
+// };
+// int main()
+// {
+//     MyClass v1(2);
+//     MyClass v2(20);
+
+//     v2 = v1;
+
+//     cout << "Value after assigment: " << v2.getvalue() << endl;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// #include <iostream>
+// using namespace std;
+
+// class MyClass
+// {
+// private:
+//     int value;
+
+// public:
+//     MyClass(int value) { this->value = value; }
+//     MyClass(MyClass &obj) { value = obj.value; }
+
+//     MyClass operator=(MyClass &v)
+//     {
+//         if (this != &v)
+//         {
+//             value = v.value;
+//         }
+//         return *this;
+//     }
+//     int getValue() { return value; }
+// };
+
+// int main()
+// {
+//     MyClass v1(2);
+//     MyClass v(22);
+
+//     v = v1;
+//     cout << "After assigment  v = " << v1.getValue() << endl;
+// }
+
+// Decrement (--)
+
+// #include <iostream>
+// using namespace std;
+
+// class MyClass
+// {
+// private:
+//     int count = 0;
+
+// public:
+//     MyClass(int count) { this->count = count; }
+
+//     MyClass operator--()
+//     {
+//         return MyClass(count--);
+//     }
+//     int getvalue()
+//     {
+//         return count;
+//     }
+// };
+// int main()
+// {
+//     MyClass c(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         --c;
+//         cout << c.getvalue() << endl;
+//     }
+// }
+// #include <iostream>
+// using namespace std;
+
+// class Counter
+// {
+// private:
+//     int count = 0;
+
+// public:
+//     Counter(int count) { this->count = count; }
+//     Counter operator--()
+//     {
+//         return Counter(count--);
+//     }
+//     int getValue()
+//     {
+//         return count;
+//     }
+// };
+// int main()
+// {
+//     Counter c(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         --c;
+//         cout << c.getValue() << endl;
+//     }
+// }
+
+// Post fix decrement
 #include <iostream>
 using namespace std;
 
-class MyClass
+class Counter
 {
 private:
-    bool value;
+    int count = 0;
 
 public:
-    MyClass(bool value) { this->value = value; }
-    MyClass operator&&(MyClass v) { return MyClass(value && v.value); }
-    bool getValue() { return value; }
+    Counter(int count) { this->count = count; }
+    Counter operator--()
+    {
+        Counter temp(*this);
+        Counter(count--);
+    }
+    int getValue()
+    {
+        return count;
+    }
 };
-int main()
-{
-    MyClass m1(true);
-    MyClass m2(true);
-
-    MyClass result = m1 && m2;
-    cout << result.getValue() << endl;
-}
