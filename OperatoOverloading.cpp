@@ -1080,3 +1080,133 @@
 
 //     return 0;
 // }
+
+// Explain how you would overload the multiplication operator (*) in a Matrix class to perform matrix multiplication between two matrices and return the resulting matrix.
+
+// #include <iostream>
+// using namespace std;
+
+// class Matrix
+// {
+// private:
+//     int rows;
+//     int cols;
+//     int array1[2][2];
+//     int array2[2][2];
+
+// public:
+//     Matrix(int rows, int cols, int arr1[2][2], int arr2[2][2])
+//     {
+//         this->rows = rows;
+//         this->cols = cols;
+
+//         for (int i = 0; i < 2; i++)
+//         {
+//             for (int j = 0; j < 2; j++)
+//             {
+//                 arr1[i][j] = array1[i][j];
+//             }
+//         }
+//         for (int i = 0; i < 2; i++)
+//         {
+//             for (int j = 0; j < 2; j++)
+//             {
+//                 arr2[i][j] = array2[i][j];
+//             }
+//         }
+//     }
+
+//     void operator+(Matrix &a1, Matrix &a2)
+//     {
+//         for (int i = 0; i < 2; i++)
+//         {
+//             for (int j = 0; j < 2; j++)
+//             {
+//             }
+//         }
+//     }
+// };
+
+// #include <iostream>
+// using namespace std;
+
+// class MyClass
+// {
+// private:
+//     bool value;
+
+// public:
+//     MyClass(bool value)
+//     {
+//         this->value = value;
+//     }
+//     MyClass operator||(MyClass &v1)
+//     {
+//         return MyClass(value || v1.value);
+//     }
+//     bool getValue()
+//     {
+//         return value;
+//     }
+// };
+// int main()
+// {
+//     MyClass value1(true);
+//     MyClass value2(false);
+
+// MyClass result = value1 || value2;
+// cout << result.getValue() << endl;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Myclass
+// {
+// private:
+//     bool value;
+
+// public:
+//     Myclass(bool value)
+//     {
+//         this->value = value;
+//     }
+//     Myclass operator||(Myclass val)
+//     {
+//         return Myclass(value || val.value);
+//     }
+//     bool getValue()
+//     {
+//         return value;
+//     }
+// };
+// int main()
+// {
+//     Myclass m1(false);
+//     Myclass m2(false);
+
+//     Myclass res = m1 || m2;
+//     cout << res.getValue() << endl;
+// }
+
+#include <iostream>
+using namespace std;
+
+class MyClass
+{
+private:
+    bool value;
+
+public:
+    MyClass(bool value) { this->value = value; }
+    MyClass operator&&(MyClass v) { return MyClass(value && v.value); }
+    bool getValue() { return value; }
+};
+int main()
+{
+    MyClass m1(true);
+    MyClass m2(true);
+
+    MyClass result = m1 && m2;
+    cout << result.getValue() << endl;
+}
