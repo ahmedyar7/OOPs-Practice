@@ -1764,26 +1764,157 @@
 //     return 0;
 // }
 
+// #include <iostream>
+// using namespace std;
+
+// class Logic
+// {
+// private:
+//     bool a;
+
+// public:
+//     Logic(bool a)
+//     {
+//         this->a = a;
+//     }
+//     Logic operator||(Logic &obj)
+//     {
+//         return Logic(a || obj.a);
+//     }
+
+//     bool display()
+//     {
+//         return a;
+//     }
+// };
+
+// int main()
+// {
+//     Logic c1(true), c2(true);
+//     Logic res = c1 || c2;
+//     cout << res.display() << endl;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Logic
+// {
+// private:
+//     bool a;
+
+// public:
+//     Logic(bool a)
+//     {
+//         this->a = a;
+//     }
+//     Logic operator!()
+//     {
+//         return Logic(!a);
+//     }
+//     bool display()
+//     {
+//         return a;
+//     }
+// };
+// int main()
+// {
+//     Logic a(true);
+//     Logic res = !a;
+//     cout << res.display() << endl;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Input_Output
+// {
+// private:
+//     string name;
+//     int age;
+
+// public:
+//     Input_Output(string name, int age)
+//     {
+//         this->name = name;
+//         this->age = age;
+//     }
+//     friend ostream &operator<<(ostream &out, Input_Output &obj)
+//     {
+//         out << obj.name << endl;
+//         out << obj.age << endl;
+//     }
+//     void display()
+//     {
+//         cout << *this;
+//     }
+// };
+// int main()
+// {
+//     Input_Output in("Ahmedyar", 12);
+//     in.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Input
+// {
+// private:
+// public:
+//     string name;
+//     int age;
+//     friend istream &operator>>(istream &in, Input &input)
+//     {
+//         in >> input.name >> input.age;
+//     }
+
+//     friend ostream &operator<<(ostream &out, Input &in)
+//     {
+//         out << in.name << endl;
+//         out << in.age << endl;
+//     }
+//     void display()
+//     {
+//         cout << *this;
+//     }
+// };
+// int main()
+// {
+//     Input a;
+//     cout << "Enter the name and age: " << endl;
+//     cin >> a.name >> a.age;
+//     a.display();
+// }
+
 #include <iostream>
 using namespace std;
 
-class Logic
+class Assingment
 {
 private:
-    bool a;
+    int value;
 
 public:
-    Logic(bool a)
+    Assingment(int value) { this->value = value; }
+
+    Assingment operator=(Assingment &obj)
     {
-        this->a = a;
-    }
-    Logic operator||(Logic &obj)
-    {
-        return Logic(a || obj.a);
+        if (this != &obj)
+        {
+            value = obj.value;
+        }
+        return *this;
     }
 
-    bool display()
+    void display()
     {
-        return a;
+        cout << value << endl;
     }
 };
+int main()
+{
+    Assingment a1(100), a2(10);
+    a2 = a1;
+    a2.display();
+}
