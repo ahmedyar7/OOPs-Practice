@@ -1448,37 +1448,342 @@
 //     cout << res.getValue();
 // }
 
+// #include <iostream>
+// using namespace std;
+
+// class Assigment
+// {
+// private:
+//     int value;
+
+// public:
+//     Assigment(int value) { this->value = value; }
+//     Assigment(Assigment &obj) { value = obj.value; }
+
+//     Assigment operator==(Assigment &o)
+//     {
+//         if (this != &o)
+//         {
+//             value = o.value;
+//         }
+//         return *this;
+//     }
+//     int getValue()
+//     {
+//         return value;
+//     }
+// };
+// int main()
+// {
+//     Assigment a1(10);
+//     Assigment a2(100);
+
+//     a1 = a2;
+
+//     cout << "After Assignmet a1 = " << a1.getValue() << endl;
+//
+
+// #include <iostream>
+// using namespace std;
+
+// class Arithematic
+// {
+// private:
+//     int a;
+
+// public:
+//     Arithematic(int num)
+//     {
+//         a = num;
+//     }
+//     Arithematic operator+(Arithematic &obj)
+//     {
+//         return (a + obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a;
+//     }
+// };
+// int main()
+// {
+//     Arithematic num1(2), num2(3);
+//     Arithematic res = num1 + num2;
+//     res.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Arithematic
+// {
+// private:
+//     int a;
+
+// public:
+//     Arithematic(int num)
+//     {
+//         a = num;
+//     }
+//     Arithematic operator-(Arithematic &obj)
+//     {
+//         return Arithematic(a - obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Arithematic num1(10), num2(22);
+//     cout << "result" << endl;
+//     Arithematic res = num1 - num2;
+//     res.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Arithematic
+// {
+// private:
+//     int a;
+
+// public:
+//     Arithematic(int num)
+//     {
+//         a = num;
+//     }
+//     Arithematic operator*(Arithematic &obj)
+//     {
+//         return Arithematic(a * obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Arithematic num1(2), num2(5);
+//     Arithematic result = num1 * num2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Arithematic
+// {
+// private:
+//     int a;
+
+// public:
+//     Arithematic(int num)
+//     {
+//         a = num;
+//     }
+//     Arithematic operator/(Arithematic &obj)
+//     {
+//         return Arithematic(a / obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Arithematic num1(2), num2(2);
+//     Arithematic res = num1 / num2;
+//     res.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int count = 0;
+
+// public:
+//     Uninary(int count)
+//     {
+//         this->count = count;
+//     }
+//     Uninary operator++()
+//     {
+//         return count++;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary c(0);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         ++c;
+//         c.display();
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int count = 0;
+
+// public:
+//     Uninary(int count)
+//     {
+//         this->count = count;
+//     }
+//     Uninary operator++(int)
+//     {
+//         Uninary temp(*this);
+//         count++;
+//         return temp;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary c(1);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         c++;
+//         c.display();
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int a;
+
+// public:
+//     Uninary(int a)
+//     {
+//         this->a = a;
+//     }
+//     Uninary operator--()
+//     {
+//         a--;
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary count(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         --count;
+//         count.display();
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int a;
+
+// public:
+//     Uninary(int a)
+//     {
+//         this->a = a;
+//     }
+//     Uninary operator--(int)
+//     {
+//         Uninary temp(*this);
+//         a--;
+//         return temp;
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary counter(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         counter--;
+//         counter.display();
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Logic
+// {
+// private:
+//     bool a;
+
+// public:
+//     Logic(bool a)
+//     {
+//         this->a = a;
+//     }
+//     Logic operator&&(Logic &obj)
+//     {
+//         return Logic(a && obj.a);
+//     }
+//     bool display()
+//     {
+//         return a;
+//     }
+// };
+
+// int main()
+// {
+//     Logic c1(false), c2(true);
+//     Logic c3 = c1 && c2;
+//     cout << c3.display() << endl;
+
+//     return 0;
+// }
+
 #include <iostream>
 using namespace std;
 
-class Assigment
+class Logic
 {
 private:
-    int value;
+    bool a;
 
 public:
-    Assigment(int value) { this->value = value; }
-    Assigment(Assigment &obj) { value = obj.value; }
-
-    Assigment operator==(Assigment &o)
+    Logic(bool a)
     {
-        if (this != &o)
-        {
-            value = o.value;
-        }
-        return *this;
+        this->a = a;
     }
-    int getValue()
+    Logic operator||(Logic &obj)
     {
-        return value;
+        return Logic(a || obj.a);
+    }
+
+    bool display()
+    {
+        return a;
     }
 };
-int main()
-{
-    Assigment a1(10);
-    Assigment a2(100);
-
-    a1 = a2;
-
-    cout << "After Assignmet a1 = " << a1.getValue() << endl;
-}
