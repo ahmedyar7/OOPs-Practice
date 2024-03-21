@@ -69,74 +69,220 @@
 
 /// Multilevel inheritance
 
+// #include <iostream>
+// using namespace std;
+
+// class Vehicle
+// {
+// private:
+//     string brand;
+
+// public:
+//     Vehicle(string brand)
+//     {
+//         this->brand = brand;
+//     }
+
+//     virtual void details()
+//     {
+//         cout << "Brand Name: " << brand << endl;
+//     }
+// };
+
+// class Car : public Vehicle
+// {
+// private:
+//     int numOfWheels;
+
+// public:
+//     Car(string brand, int numOfWheels) : Vehicle(brand)
+//     {
+//         this->numOfWheels = numOfWheels;
+//     }
+
+//     void details() override
+//     {
+//         Vehicle ::details();
+//         cout << "Number Of Wheels: " << numOfWheels << endl;
+//     }
+// };
+
+// class ElectricCar : public Car
+// {
+// private:
+//     int batteryCapicity;
+
+// public:
+//     ElectricCar(string brand, int numOfWheels, int batteryCapicity) : Car(brand, numOfWheels)
+//     {
+//         this->batteryCapicity = batteryCapicity;
+//     }
+//     void details() override
+//     {
+//         Car ::details();
+//         cout << "Battery Capicity: " << batteryCapicity << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Vehicle v("Susuki");
+//     cout << "Generic Car: " << endl;
+//     v.details();
+
+//     cout << endl;
+
+//     Car car("Mecedes", 4);
+//     cout << "Branded Car: " << endl;
+//     car.details();
+
+//     cout << "Electric Car: " << endl;
+//     ElectricCar ev("Tesla", 4, 40000);
+//     ev.details();
+// }
+
+/// Multiple inheritance in CPP
+
+// #include <iostream>
+// #include <string>
+// using namespace std;
+
+// class Animal
+// {
+// protected:
+//     string name;
+
+// public:
+//     Animal(string name)
+//     {
+//         this->name = name;
+//     }
+//     virtual void speak()
+//     {
+//     }
+// };
+// class Flyable
+// {
+// public:
+//     virtual void fly()
+//     {
+//     }
+// };
+
+// class Bird : public Animal, public Flyable
+// {
+// public:
+//     Bird(string name) : Animal(name)
+//     {
+//         this->name = name;
+//     }
+
+//     void speak() override
+//     {
+//         Animal::speak();
+//         cout << name << "Says Chirp, Chirp" << endl;
+//     }
+
+//     void fly() override
+//     {
+//         Flyable::fly();
+//         cout << name << "Is flying" << endl;
+//     }
+// };
+// int main()
+// {
+//     Bird bird("Sparrow");
+//     bird.speak();
+//     bird.fly();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Vehicle
+// {
+// protected:
+//     string model;
+
+// public:
+//     Vehicle(string model)
+//     {
+//         this->model = model;
+//     }
+//     virtual void details()
+//     {
+//         cout << "Model: " << model << endl;
+//     }
+// };
+
+// class Driveable
+// {
+// private:
+// public:
+//     void drive()
+//     {
+//         cout << "Driving the Vehical" << endl;
+//     }
+// };
+
+// class Flyable
+// {
+// private:
+// public:
+//     void fly()
+//     {
+//         cout << "Vehical is Flying " << endl;
+//     }
+// };
+
+// class FlyingCar : public Vehicle, public Flyable
+// {
+// private:
+// public:
+//     FlyingCar(string model) : Vehicle(model) {}
+
+//     void details() override
+//     {
+//         Vehicle::details();
+//         cout << "Type of Flying Car: " << endl;
+//     }
+// };
+
+// int main()
+// {
+//     FlyingCar flyingCar("FutureFly");
+
+//     cout << "Details of Flying Car: " << endl;
+
+//     flyingCar.fly();
+//     flyingCar.details();
+// }
 #include <iostream>
 using namespace std;
 
-class Vehicle
+class Person
 {
-private:
-    string brand;
+protected:
+    string name;
 
 public:
-    Vehicle(string brand)
+    Person(string name)
     {
-        this->brand = brand;
+        this->name = name;
     }
-
-    virtual void details()
+    virtual void displayDetails()
     {
-        cout << "Brand Name: " << brand << endl;
+        cout << "Name: " << name << endl;
     }
 };
-
-class Car : public Vehicle
+class Student : public Person
 {
 private:
-    int numOfWheels;
+    string studentID;
 
 public:
-    Car(string brand, int numOfWheels) : Vehicle(brand)
+    Student(string name, string studentID) : Person(name)
     {
-        this->numOfWheels = numOfWheels;
-    }
-
-    void details() override
-    {
-        Vehicle ::details();
-        cout << "Number Of Wheels: " << numOfWheels << endl;
+        this->studentID = studentID;
     }
 };
-
-class ElectricCar : public Car
-{
-private:
-    int batteryCapicity;
-
-public:
-    ElectricCar(string brand, int numOfWheels, int batteryCapicity) : Car(brand, numOfWheels)
-    {
-        this->batteryCapicity = batteryCapicity;
-    }
-    void details() override
-    {
-        Car ::details();
-        cout << "Battery Capicity: " << batteryCapicity << endl;
-    }
-};
-
-int main()
-{
-    Vehicle v("Susuki");
-    cout << "Generic Car: " << endl;
-    v.details();
-
-    cout << endl;
-
-    Car car("Mecedes", 4);
-    cout << "Branded Car: " << endl;
-    car.details();
-
-    cout << "Electric Car: " << endl;
-    ElectricCar ev("Tesla", 4, 40000);
-    ev.details();
-}
