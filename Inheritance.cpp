@@ -256,33 +256,90 @@
 
 //     flyingCar.fly();
 //     flyingCar.details();
-// }
+// // }
+// #include <iostream>
+// using namespace std;
+
+// class Person
+// {
+// protected:
+//     string name;
+
+// public:
+//     Person(string name)
+//     {
+//         this->name = name;
+//     }
+//     virtual void displayDetails()
+//     {
+//         cout << "Name: " << name << endl;
+//     }
+// };
+// class Student : public Person
+// {
+// private:
+//     string studentID;
+
+// public:
+//     Student(string name, string studentID) : Person(name)
+//     {
+//         this->studentID = studentID;
+//     }
+// };
+
 #include <iostream>
 using namespace std;
 
-class Person
+class Account
 {
 protected:
-    string name;
+    string accountNumber;
+    double balance;
 
 public:
-    Person(string name)
+    Account(string accountNumber, double balance)
     {
-        this->name = name;
+        this->accountNumber = accountNumber;
+        this->balance = balance;
     }
-    virtual void displayDetails()
+
+    void deposit(double amount)
     {
-        cout << "Name: " << name << endl;
+        balance += amount;
+        cout << "Deposited $" << amount << " Into Account " << accountNumber << endl;
+    }
+
+    virtual bool withdraw(double amount)
+    {
+        if (balance >= amount)
+        {
+            balance -= amount;
+            cout << "Amount $" << amount << "Withdrawn from account " << accountNumber << endl;
+            return true;
+        }
+        else
+        {
+            cout << "Isuffient Balance " << endl;
+            return false;
+        }
+    }
+
+    virtual void display()
+    {
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Balance $" << balance << endl;
     }
 };
-class Student : public Person
+
+class SavingAccount : public Account
 {
 private:
-    string studentID;
+    double interestRate;
 
 public:
-    Student(string name, string studentID) : Person(name)
+    // Constructor
+    SavingAccount(string accountNumber, double balance, double interestRate) : Account(accountNumber, balance)
     {
-        this->studentID = studentID;
+        this->interestRate = interestRate;
     }
 };
