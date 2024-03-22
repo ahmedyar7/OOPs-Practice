@@ -342,4 +342,117 @@ public:
     {
         this->interestRate = interestRate;
     }
+
+    void addIntrest()
+    {
+        balance += balance * interestRate;
+        cout << "Added Intrest to Account " << accountNumber << endl;
+    }
+    void display() override
+    {
+        Account::display();
+        cout << "Intrest Rate: " << interestRate * 100 << "%" << endl;
+    }
 };
+
+class CheckingAccount : public Account
+{
+private:
+    double overdraftLimit;
+
+public:
+    // Constructor
+    CheckingAccount(string accountNumber, double balance, double overdraftLimit) : Account(accountNumber, balance)
+    {
+        this->overdraftLimit = overdraftLimit;
+    }
+
+    bool withdraw(double amount) override
+    {
+        if (balance + overdraftLimit >= amount)
+        {
+            balance -= amount;
+            cout << "Withdrawn $" << amount << "From account " << accountNumber << endl;
+            return true;
+        }
+        else
+        {
+            cout << "Transaction is not possible " << endl;
+            return false;
+        }
+    }
+    void display() override
+    {
+        Account::display();
+        cout << "OverDraft Limit $" << overdraftLimit << endl;
+    }
+};
+
+class CreditAccount : public Account
+{
+private:
+    double creditLimit;
+
+public:
+    CreditAccount(string accountNumber, double balance, double creditLimit) : Account(accountNumber, balance)
+    {
+        this->creditLimit = creditLimit;
+    }
+
+    bool withdraw(double amount)
+    {
+        if (balance + creditLimit >= amount)
+        {
+            balance -= amount;
+            cout << "Withdrawn $" << amount << "From account " << accountNumber << endl;
+            return true;
+        }
+        else
+        {
+            cout << "Transaction is not possible " << endl;
+            return false;
+        }
+    }
+    // * overriding the display Function
+    void display() override
+    {
+        Account::display();
+        cout << "Acccount Credit Limit " << creditLimit << endl;
+    }
+};
+int main()
+{
+    SavingAccount savings("88891", 5000, 0.05);
+    CheckingAccount checking("99993", 3000, 1000);
+    CreditAccount credit("12314", 4000, 5000);
+
+    cout << "Saving Account information " << endl;
+    savings.display();
+    std::cout << "Savings Account Information:" << std::endl;
+    savings.display();
+    std::cout << std::endl;
+
+    std::cout << "Checking Account Information:" << std::endl;
+    checking.display();
+    std::cout << std::endl;
+
+    std::cout << "Credit Account Information:" << std::endl;
+    credit.display();
+    std::cout << std::endl;
+
+    // Perform operations on accounts
+    savings.deposit(1000);
+    // savings.addInterest();
+    savings.withdraw(2000);
+    std::cout << std::endl;
+
+    checking.deposit(500);
+    checking.withdraw(4000);
+    std::cout << std::endl;
+
+    credit.deposit(1000);
+    credit.withdraw(7000);
+    std::cout << std::endl;
+
+    return 0;
+}
