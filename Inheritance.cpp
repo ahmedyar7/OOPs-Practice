@@ -287,172 +287,322 @@
 //     }
 // };
 
+// #include <iostream>
+// using namespace std;
+
+// class Account
+// {
+// protected:
+//     string accountNumber;
+//     double balance;
+
+// public:
+//     Account(string accountNumber, double balance)
+//     {
+//         this->accountNumber = accountNumber;
+//         this->balance = balance;
+//     }
+
+//     void deposit(double amount)
+//     {
+//         balance += amount;
+//         cout << "Deposited $" << amount << " Into Account " << accountNumber << endl;
+//     }
+
+//     virtual bool withdraw(double amount)
+//     {
+//         if (balance >= amount)
+//         {
+//             balance -= amount;
+//             cout << "Amount $" << amount << "Withdrawn from account " << accountNumber << endl;
+//             return true;
+//         }
+//         else
+//         {
+//             cout << "Isuffient Balance " << endl;
+//             return false;
+//         }
+//     }
+
+//     virtual void display()
+//     {
+//         cout << "Account Number: " << accountNumber << endl;
+//         cout << "Balance $" << balance << endl;
+//     }
+// };
+
+// class SavingAccount : public Account
+// {
+// private:
+//     double interestRate;
+
+// public:
+//     // Constructor
+//     SavingAccount(string accountNumber, double balance, double interestRate) : Account(accountNumber, balance)
+//     {
+//         this->interestRate = interestRate;
+//     }
+
+//     void addIntrest()
+//     {
+//         balance += balance * interestRate;
+//         cout << "Added Intrest to Account " << accountNumber << endl;
+//     }
+//     void display() override
+//     {
+//         Account::display();
+//         cout << "Intrest Rate: " << interestRate * 100 << "%" << endl;
+//     }
+// };
+
+// class CheckingAccount : public Account
+// {
+// private:
+//     double overdraftLimit;
+
+// public:
+//     // Constructor
+//     CheckingAccount(string accountNumber, double balance, double overdraftLimit) : Account(accountNumber, balance)
+//     {
+//         this->overdraftLimit = overdraftLimit;
+//     }
+
+//     bool withdraw(double amount) override
+//     {
+//         if (balance + overdraftLimit >= amount)
+//         {
+//             balance -= amount;
+//             cout << "Withdrawn $" << amount << "From account " << accountNumber << endl;
+//             return true;
+//         }
+//         else
+//         {
+//             cout << "Transaction is not possible " << endl;
+//             return false;
+//         }
+//     }
+//     void display() override
+//     {
+//         Account::display();
+//         cout << "OverDraft Limit $" << overdraftLimit << endl;
+//     }
+// };
+
+// class CreditAccount : public Account
+// {
+// private:
+//     double creditLimit;
+
+// public:
+//     CreditAccount(string accountNumber, double balance, double creditLimit) : Account(accountNumber, balance)
+//     {
+//         this->creditLimit = creditLimit;
+//     }
+
+//     bool withdraw(double amount)
+//     {
+//         if (balance + creditLimit >= amount)
+//         {
+//             balance -= amount;
+//             cout << "Withdrawn $" << amount << "From account " << accountNumber << endl;
+//             return true;
+//         }
+//         else
+//         {
+//             cout << "Transaction is not possible " << endl;
+//             return false;
+//         }
+//     }
+//     // * overriding the display Function
+//     void display() override
+//     {
+//         Account::display();
+//         cout << "Acccount Credit Limit " << creditLimit << endl;
+//     }
+// };
+// int main()
+// {
+//     SavingAccount savings("88891", 5000, 0.05);
+//     CheckingAccount checking("99993", 3000, 1000);
+//     CreditAccount credit("12314", 4000, 5000);
+
+//     cout << "Saving Account information " << endl;
+//     savings.display();
+//     std::cout << "Savings Account Information:" << std::endl;
+//     savings.display();
+//     std::cout << std::endl;
+
+//     std::cout << "Checking Account Information:" << std::endl;
+//     checking.display();
+//     std::cout << std::endl;
+
+//     std::cout << "Credit Account Information:" << std::endl;
+//     credit.display();
+//     std::cout << std::endl;
+
+//     // Perform operations on accounts
+//     savings.deposit(1000);
+//     // savings.addInterest();
+//     savings.withdraw(2000);
+//     std::cout << std::endl;
+
+//     checking.deposit(500);
+//     checking.withdraw(4000);
+//     std::cout << std::endl;
+
+//     credit.deposit(1000);
+//     credit.withdraw(7000);
+//     std::cout << std::endl;
+
+//     return 0;
+// }
+
+// Create a base class Employee with properties name and salary.Derive two classes Manager and Worker from Employee.Implement a virtual function calculateBonus() in Employee which returns 0.0, override this function in Manager to calculate a bonus based on the salary and in Worker to return a fixed bonus amount.
+
+// #include <iostream>
+// using namespace std;
+
+// class Employee
+// {
+// protected:
+//     string name;
+//     int salary;
+
+// public:
+//     Employee(string name, int salary)
+//     {
+//         this->name = name;
+//         this->salary = salary;
+//     }
+//     void displayDetails()
+//     {
+//         cout << "Name: " << name << endl;
+//         cout << "Salary: " << salary << endl;
+//     }
+//     virtual int calculateBonus()
+//     {
+//         return 0;
+//     }
+// };
+// class Manager : public Employee
+// {
+// private:
+//     double bonus;
+
+// public:
+//     Manager(string name, int salary, double bonus) : Employee(name, salary)
+//     {
+//         this->bonus = bonus;
+//     }
+//     int calculateBonus() override
+//     {
+//         Employee::calculateBonus();
+//         salary += salary * bonus / 100;
+//         return salary;
+//     }
+// };
+// class Worker : public Employee
+// {
+// private:
+//     double bonus;
+
+// public:
+//     Worker(string name, int salary) : Employee(name, salary)
+//     {
+//         this->bonus = 20;
+//     }
+//     int calculateBonus() override
+//     {
+//         Employee::calculateBonus();
+//         salary += salary * bonus / 100;
+//         return salary;
+//     }
+// };
+
+// int main()
+// {
+
+//     Employee emp("Ahmed", 12000);
+//     emp.displayDetails();
+
+//     Manager manager("Yar", 12000, 50);
+//     cout << "Salary After the variable bounus: " << manager.calculateBonus() << endl;
+
+//     Worker worker("Yar", 12000);
+//     cout << "Salary After the variable bounus: " << worker.calculateBonus() << endl;
+
+//     return 0;
+// }
+
+// Define a base class Animal with properties species and sound. Derive two classes Bird and Mammal from Animal. Implement pure virtual functions fly() and makeSound() in Bird and Mammal respectively. Derive classes Eagle and Dog from Bird and Mammal and implement these functions accordingly.
+
 #include <iostream>
 using namespace std;
 
-class Account
+class Animal
 {
 protected:
-    string accountNumber;
-    double balance;
+    string species;
+    string sound;
 
 public:
-    Account(string accountNumber, double balance)
+    Animal(){};
+    Animal(string species, string sound)
     {
-        this->accountNumber = accountNumber;
-        this->balance = balance;
-    }
-
-    void deposit(double amount)
-    {
-        balance += amount;
-        cout << "Deposited $" << amount << " Into Account " << accountNumber << endl;
-    }
-
-    virtual bool withdraw(double amount)
-    {
-        if (balance >= amount)
-        {
-            balance -= amount;
-            cout << "Amount $" << amount << "Withdrawn from account " << accountNumber << endl;
-            return true;
-        }
-        else
-        {
-            cout << "Isuffient Balance " << endl;
-            return false;
-        }
-    }
-
-    virtual void display()
-    {
-        cout << "Account Number: " << accountNumber << endl;
-        cout << "Balance $" << balance << endl;
+        this->sound = sound;
+        this->species = species;
     }
 };
 
-class SavingAccount : public Account
+class Bird : public Animal
 {
-private:
-    double interestRate;
-
 public:
-    // Constructor
-    SavingAccount(string accountNumber, double balance, double interestRate) : Account(accountNumber, balance)
+    Bird(){};
+    virtual void fly()
     {
-        this->interestRate = interestRate;
-    }
-
-    void addIntrest()
-    {
-        balance += balance * interestRate;
-        cout << "Added Intrest to Account " << accountNumber << endl;
-    }
-    void display() override
-    {
-        Account::display();
-        cout << "Intrest Rate: " << interestRate * 100 << "%" << endl;
     }
 };
 
-class CheckingAccount : public Account
+class Mammal : public Animal
 {
-private:
-    double overdraftLimit;
-
 public:
-    // Constructor
-    CheckingAccount(string accountNumber, double balance, double overdraftLimit) : Account(accountNumber, balance)
+    Mammal(){};
+    virtual void makesound()
     {
-        this->overdraftLimit = overdraftLimit;
-    }
-
-    bool withdraw(double amount) override
-    {
-        if (balance + overdraftLimit >= amount)
-        {
-            balance -= amount;
-            cout << "Withdrawn $" << amount << "From account " << accountNumber << endl;
-            return true;
-        }
-        else
-        {
-            cout << "Transaction is not possible " << endl;
-            return false;
-        }
-    }
-    void display() override
-    {
-        Account::display();
-        cout << "OverDraft Limit $" << overdraftLimit << endl;
     }
 };
 
-class CreditAccount : public Account
+class Eagle : public Bird
 {
-private:
-    double creditLimit;
-
 public:
-    CreditAccount(string accountNumber, double balance, double creditLimit) : Account(accountNumber, balance)
+    Eagle(){};
+    void fly() override
     {
-        this->creditLimit = creditLimit;
-    }
-
-    bool withdraw(double amount)
-    {
-        if (balance + creditLimit >= amount)
-        {
-            balance -= amount;
-            cout << "Withdrawn $" << amount << "From account " << accountNumber << endl;
-            return true;
-        }
-        else
-        {
-            cout << "Transaction is not possible " << endl;
-            return false;
-        }
-    }
-    // * overriding the display Function
-    void display() override
-    {
-        Account::display();
-        cout << "Acccount Credit Limit " << creditLimit << endl;
+        Bird ::fly();
+        cout << "Eagle is flygin ";
     }
 };
+
+class Tiger : public Mammal
+{
+public:
+    Tiger(){};
+    void makesound() override
+    {
+        Mammal::makesound();
+        cout << "ROAR" << endl;
+    }
+};
+
 int main()
 {
-    SavingAccount savings("88891", 5000, 0.05);
-    CheckingAccount checking("99993", 3000, 1000);
-    CreditAccount credit("12314", 4000, 5000);
+    Animal am("bird", "ow ow");
 
-    cout << "Saving Account information " << endl;
-    savings.display();
-    std::cout << "Savings Account Information:" << std::endl;
-    savings.display();
-    std::cout << std::endl;
+    Tiger ti;
+    ti.makesound();
 
-    std::cout << "Checking Account Information:" << std::endl;
-    checking.display();
-    std::cout << std::endl;
-
-    std::cout << "Credit Account Information:" << std::endl;
-    credit.display();
-    std::cout << std::endl;
-
-    // Perform operations on accounts
-    savings.deposit(1000);
-    // savings.addInterest();
-    savings.withdraw(2000);
-    std::cout << std::endl;
-
-    checking.deposit(500);
-    checking.withdraw(4000);
-    std::cout << std::endl;
-
-    credit.deposit(1000);
-    credit.withdraw(7000);
-    std::cout << std::endl;
+    Eagle b;
+    b.fly();
 
     return 0;
 }
