@@ -48,9 +48,9 @@ public:
     float calculateTotalGradePoint() const
     {
         float total = 0.0;
-        for (auto Courses : courses)
+        for (const Courses &course : courses)
         {
-            total += course.getGradePoint();
+            total += courses.getGradePoint();
         }
         return total;
     }

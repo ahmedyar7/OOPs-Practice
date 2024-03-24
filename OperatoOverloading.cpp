@@ -1887,34 +1887,140 @@
 //     a.display();
 // }
 
+// #include <iostream>
+// using namespace std;
+
+// class Assingment
+// {
+// private:
+//     int value;
+
+// public:
+//     Assingment(int value) { this->value = value; }
+
+//     Assingment operator=(Assingment &obj)
+//     {
+//         if (this != &obj)
+//         {
+//             value = obj.value;
+//         }
+//         return *this;
+//     }
+
+//     void display()
+//     {
+//         cout << value << endl;
+//     }
+// };
+// int main()
+// {
+//     Assingment a1(100), a2(10);
+//     a2 = a1;
+//     a2.display();
+// }
+
+// * Function call Operator overloading in cpp
+// #include <iostream>
+// using namespace std;
+
+// class Function
+// {
+// private:
+//     int a;
+//     int b;
+
+// public:
+//     int operator()(int x, int y)
+//     {
+//         return x + y;
+//     }
+// };
+// int main()
+// {
+//     Function add;
+//     int result = add(5, 5);
+//     cout << result << endl;
+// }
+
+// * Overloading the post increment and the post decrement operator \\
+
+// #include <iostream>
+// using namespace std;
+
+// class Unaray
+// {
+// private:
+//     int count;
+
+// public:
+//     Unaray(int count)
+//     {
+//         this->count = count;
+//     }
+//     Unaray operator++(int)
+//     {
+//         Unaray temp = *this;
+//         count++;
+//         return temp;
+//     }
+//     Unaray operator--(int)
+//     {
+//         Unaray temp = *this;
+//         count--;
+//         return temp;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Unaray c(1);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         c++;
+//         c.display();
+//     }
+//     for (int i = 0; i < 10; i++)
+//     {
+//         c--;
+//         c.display();
+//     }
+// }
+
+// * Insertion and Exersion Operator overloading in cPP
+
 #include <iostream>
 using namespace std;
 
-class Assingment
+class Insert
 {
-private:
-    int value;
+public:
+    string name;
+    int age;
 
 public:
-    Assingment(int value) { this->value = value; }
-
-    Assingment operator=(Assingment &obj)
+    friend istream &operator>>(istream &in, Insert &input)
     {
-        if (this != &obj)
-        {
-            value = obj.value;
-        }
-        return *this;
+        in >> input.name;
+        in >> input.age;
     }
-
+    friend ostream &operator<<(ostream &out, Insert &output)
+    {
+        out << output.name << endl;
+        out << output.age << endl;
+    }
     void display()
     {
-        cout << value << endl;
+        cout << age << endl;
+        cout << name << endl;
     }
 };
 int main()
 {
-    Assingment a1(100), a2(10);
-    a2 = a1;
-    a2.display();
+    Insert gg;
+    cin >> gg.name;
+    cin >> gg.age;
+    gg.display();
 }
