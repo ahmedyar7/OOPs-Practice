@@ -536,73 +536,211 @@
 
 // Define a base class Animal with properties species and sound. Derive two classes Bird and Mammal from Animal. Implement pure virtual functions fly() and makeSound() in Bird and Mammal respectively. Derive classes Eagle and Dog from Bird and Mammal and implement these functions accordingly.
 
+// #include <iostream>
+// using namespace std;
+
+// class Animal
+// {
+// protected:
+//     string species;
+//     string sound;
+
+// public:
+//     Animal(){};
+//     Animal(string species, string sound)
+//     {
+//         this->sound = sound;
+//         this->species = species;
+//     }
+// };
+
+// class Bird : public Animal
+// {
+// public:
+//     Bird(){};
+//     virtual void fly()
+//     {
+//     }
+// };
+
+// class Mammal : public Animal
+// {
+// public:
+//     Mammal(){};
+//     virtual void makesound()
+//     {
+//     }
+// };
+
+// class Eagle : public Bird
+// {
+// public:
+//     Eagle(){};
+//     void fly() override
+//     {
+//         Bird ::fly();
+//         cout << "Eagle is flygin ";
+//     }
+// };
+
+// class Tiger : public Mammal
+// {
+// public:
+//     Tiger(){};
+//     void makesound() override
+//     {
+//         Mammal::makesound();
+//         cout << "ROAR" << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Animal am("bird", "ow ow");
+
+//     Tiger ti;
+//     ti.makesound();
+
+//     Eagle b;
+//     b.fly();
+
+//     return 0;
+// }
+
+// * Multiple Inheritance in cpp
+// #include <iostream>
+// using namespace std;
+
+// class Character
+// {
+// public:
+//     virtual void attack(){};
+// };
+
+// class SpecialTrait
+// {
+// public:
+//     void useSpecial()
+//     {
+//         cout << "Using Special Traits" << endl;
+//     }
+// };
+
+// class Warrior : public Character
+// {
+// public:
+//     void attack() override
+//     {
+//         Character::attack();
+//         cout << "Warrior attack with the sword" << endl;
+//     }
+// };
+
+// class Mage : public Character, public SpecialTrait
+// {
+// public:
+//     void attack() override
+//     {
+//         cout << "Mage Cast fire" << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Warrior war;
+//     war.attack();
+
+//     Mage mage;
+//     mage.attack();
+// }
+
+// * Project Related To multilevel Inheritance in cpp
 #include <iostream>
 using namespace std;
 
-class Animal
+class User
 {
 protected:
-    string species;
-    string sound;
+    string userName;
+    bool loggedIn;
 
 public:
-    Animal(){};
-    Animal(string species, string sound)
+    User(string userName)
     {
-        this->sound = sound;
-        this->species = species;
+        this->userName = userName;
+    }
+
+    void login()
+    {
+        loggedIn = true;
+        cout << "User: " << userName << " logged IN " << endl;
+    }
+
+    void logout()
+    {
+        loggedIn = false;
+        cout << "User " << userName << " logged out " << endl;
     }
 };
 
-class Bird : public Animal
+class Student : public User
 {
 public:
-    Bird(){};
-    virtual void fly()
+    Student(string userName) : User(userName) {}
+
+    void borrowBook(const string &book)
     {
+        if (loggedIn)
+        {
+            cout << "User " << userName << " borrowed Book " << endl;
+        }
+        else
+            cout << "Please login to borrow book " << endl;
     }
 };
 
-class Mammal : public Animal
+class Faculty : public User
 {
 public:
-    Mammal(){};
-    virtual void makesound()
+    Faculty(string userName) : User(userName) {}
+
+    void bookRecommendation(const string &book)
     {
+        if (loggedIn)
+        {
+            cout << "Faculty " << userName << " Recomendation list " << endl;
+        }
+        else
+            cout << "Please login to get the book recommendation " << endl;
     }
 };
 
-class Eagle : public Bird
+class Librarian : public User
 {
 public:
-    Eagle(){};
-    void fly() override
+    Librarian(string &userName) : User(userName)
     {
-        Bird ::fly();
-        cout << "Eagle is flygin ";
     }
-};
 
-class Tiger : public Mammal
-{
-public:
-    Tiger(){};
-    void makesound() override
+    void addBook(string &book)
     {
-        Mammal::makesound();
-        cout << "ROAR" << endl;
+        if (loggedIn)
+        {
+            cout << "Librirain " << userName << " just added " << book << endl;
+        }
+        else
+            cout << "Please login to add books " << endl;
     }
 };
 
 int main()
 {
-    Animal am("bird", "ow ow");
+    Student s1("35324");
+    s1.login();
+    s1.borrowBook("Fundamental of programming");
+    s1.logout();
 
-    Tiger ti;
-    ti.makesound();
-
-    Eagle b;
-    b.fly();
-
-    return 0;
+    Faculty f("1231");
+    f.login();
+    f.bookRecommendation("Linear Algebra");
 }
