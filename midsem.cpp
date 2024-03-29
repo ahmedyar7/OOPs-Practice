@@ -264,13 +264,100 @@
 
 // Create a class representing an employee with attributes like name, employee ID, salary, etc. Implement methods for calculating monthly salary, giving raises, and displaying employee details.
 
+// #include <iostream>
+// using namespace std;
+
+// class Employee
+// {
+// private:
+//     string name;
+//     string employeeID;
+//     int salary;
+
+// public:
+//     Employee(string name, string employeeID, int salary)
+//     {
+//         this->name = name;
+//         this->employeeID = employeeID;
+//         this->salary = salary;
+//     }
+//     void display()
+//     {
+//         cout << "Name: " << name << endl;
+//         cout << "EmployeeID: " << employeeID << endl;
+//         cout << "Salary: " << salary << endl;
+//     }
+
+//     void monthlyRaises(double amount)
+//     {
+//         salary = salary * (amount / 100);
+//     }
+// };
+
+// int main()
+// {
+//     Employee employee("Ahmed", "323", 2334);
+//     employee.monthlyRaises(50);
+//     employee.display();
+// }
+
 #include <iostream>
+#include <vector>
 using namespace std;
 
-class Employee
+class TimeTable
 {
 private:
-    string name;
-    string employeeID;
-    int salary;
+    string day;
+    vector<string> timeslot;
+    vector<string> subject;
+
+public:
+    TimeTable(string day)
+    {
+        this->day = day;
+    }
+
+    void add_subject(string timeslots, string subjects)
+    {
+        timeslot.push_back(timeslots);
+        subject.push_back(subjects);
+    }
+
+    void changeSlot(string oldTime, string newTime, string subjects)
+    {
+        for (size_t i = 0; i < timeslot.size(); i++)
+        {
+            if (timeslot[i] == oldTime)
+            {
+                timeslot[i] = newTime;
+                subject[i] = subjects;
+                return;
+            }
+        }
+    }
+
+    void displayTimeTable()
+    {
+        cout << "Time table for " << day << endl;
+        for (size_t i = 0; i < timeslot.size(); i++)
+        {
+            cout << "Time Slot: " << timeslot[i] << " - Subject: " << subject[i] << endl;
+        }
+    }
 };
+int main()
+{
+    TimeTable monday("monday");
+    monday.add_subject("9AM - 10 PM", "Mathematics");
+    monday.add_subject("11AM - 12 PM", "Physics");
+    monday.add_subject("12AM - 1 PM", "Mathematics");
+
+    monday.displayTimeTable();
+
+    monday.changeSlot("9AM - 10PM", "3PM - 4PM", "Fundamental of Programming");
+
+    cout << endl;
+    cout << "Updated TimeTable " << endl;
+    monday.displayTimeTable();
+}
