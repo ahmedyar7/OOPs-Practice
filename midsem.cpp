@@ -849,33 +849,93 @@
 
 // ? Define a class Counter with a static member variable count and a static member function increment(). Create multiple objects of the Counter class and call the increment() function to increment the count. Display the count after each increment operation
 
+// #include <iostream>
+// using namespace std;
+
+// class Counter
+// {
+// private:
+//     static int count;
+
+// public:
+//     void counterIncrement()
+//     {
+//         count++;
+//     }
+//     int getCounter()
+//     {
+//         return count;
+//     }
+// };
+
+// int Counter::count = 0;
+
+// int main()
+// {
+//     Counter c;
+//     for (int i = 0; i < 10; i++)
+//     {
+//         c.counterIncrement();
+//         cout << c.getCounter() << endl;
+//     }
+// }
+
+// ? Upcasting in CPP:
+// * When object of the derived class is called in the base class by using th pointer and the reference in the program this is considerd to be safe because the derived object contain everything of the base class
+
+// #include <iostream>
+// using namespace std;
+
+// class Animal
+// {
+// public:
+//     virtual void sound()
+//     {
+//         cout << "Animal makes sound " << endl;
+//     }
+// };
+
+// class Dog : public Animal
+// {
+// public:
+//     void sound() override
+//     {
+//         cout << "Dog barks " << endl;
+//     }
+//     void wag_tail()
+//     {
+//         cout << "Dog contain the tail " << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Dog mydog;
+//     Animal *ptranimal = &mydog;
+
+//     ptranimal->sound(); // (->) Member access through the pointer;
+// }
+
 #include <iostream>
 using namespace std;
 
-class Counter
+class MyClass
 {
-private:
-    static int count;
-
 public:
-    void counterIncrement()
+    int data;
+    void display()
     {
-        count++;
-    }
-    int getCounter()
-    {
-        return count;
+        cout << "Data: " << data << endl;
     }
 };
 
-int Counter::count = 0;
-
 int main()
 {
-    Counter c;
-    for (int i = 0; i < 10; i++)
-    {
-        c.counterIncrement();
-        cout << c.getCounter() << endl;
-    }
+    MyClass obj1;
+    obj1.data = 10;
+    obj1.display(); // Using the . metod access operator
+
+    MyClass *ptr = &obj1;
+    ptr->data = 12; // Using the pointer the member access opertor (->)
+    ptr->display();
 }
