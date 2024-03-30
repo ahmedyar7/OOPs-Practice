@@ -301,63 +301,142 @@
 //     employee.display();
 // }
 
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// class TimeTable
+// {
+// private:
+//     string day;
+//     vector<string> timeslot;
+//     vector<string> subject;
+
+// public:
+//     TimeTable(string day)
+//     {
+//         this->day = day;
+//     }
+
+//     void add_subject(string timeslots, string subjects)
+//     {
+//         timeslot.push_back(timeslots);
+//         subject.push_back(subjects);
+//     }
+
+//     void changeSlot(string oldTime, string newTime, string subjects)
+//     {
+//         for (size_t i = 0; i < timeslot.size(); i++)
+//         {
+//             if (timeslot[i] == oldTime)
+//             {
+//                 timeslot[i] = newTime;
+//                 subject[i] = subjects;
+//                 return;
+//             }
+//         }
+//     }
+
+//     void displayTimeTable()
+//     {
+//         cout << "Time table for " << day << endl;
+//         for (size_t i = 0; i < timeslot.size(); i++)
+//         {
+//             cout << "Time Slot: " << timeslot[i] << " - Subject: " << subject[i] << endl;
+//         }
+//     }
+// };
+// int main()
+// {
+//     TimeTable monday("monday");
+//     monday.add_subject("9AM - 10 PM", "Mathematics");
+//     monday.add_subject("11AM - 12 PM", "Physics");
+//     monday.add_subject("12AM - 1 PM", "Mathematics");
+
+//     monday.displayTimeTable();
+
+//     monday.changeSlot("9AM - 10PM", "3PM - 4PM", "Fundamental of Programming");
+
+//     cout << endl;
+//     cout << "Updated TimeTable " << endl;
+//     monday.displayTimeTable();
+// }
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// class TimeTable
+// {
+// private:
+//     string day;
+//     vector<string> timeSlot;
+//     vector<string> subject;
+
+// public:
+//     TimeTable(string day)
+//     {
+//         this->day = day;
+//     }
+
+//     void add_subject(string time_slot, string subjects)
+//     {
+//         timeSlot.push_back(time_slot);
+//         subject.push_back(subjects);
+//     }
+
+//     void change_time_slot(string old_slot, string new_slot, string new_subject)
+//     {
+//         for (int i = 0; i < timeSlot.size(); i++)
+//         {
+//             if (timeSlot[i] == old_slot)
+//             {
+//                 timeSlot[i] = new_slot;
+//                 subject[i] = new_subject;
+//             }
+//             else
+//             {
+//                 cout << "The subject donot exist: " << endl;
+//             }
+//         }
+//     }
+
+//     void display_time_table()
+//     {
+//         for (int i = 0; i < timeSlot.size(); i++)
+//         {
+//             cout << "Time: " << timeSlot[i] << " -Subject: " << subject[i] << endl;
+//         }
+//     }
+// };
+
+// int main()
+// {
+//     TimeTable t1("Monday");
+
+//     t1.add_subject("10AM - 12PM", "English");
+//     t1.add_subject("11AM - 1PM", "English");
+
+//     t1.change_time_slot("10AM - 12PM", "13PM - 14PM", "Programming");
+
+//     t1.display_time_table();
+// }
+
+// * Funciton overloading in CPP:
+
 #include <iostream>
-#include <vector>
 using namespace std;
 
-class TimeTable
+class MathsOperations
 {
-private:
-    string day;
-    vector<string> timeslot;
-    vector<string> subject;
 
 public:
-    TimeTable(string day)
+    int add(int num1, int num2)
     {
-        this->day = day;
+        return num1 + num2;
     }
-
-    void add_subject(string timeslots, string subjects)
+    double add(double num1, double num2)
     {
-        timeslot.push_back(timeslots);
-        subject.push_back(subjects);
-    }
-
-    void changeSlot(string oldTime, string newTime, string subjects)
-    {
-        for (size_t i = 0; i < timeslot.size(); i++)
-        {
-            if (timeslot[i] == oldTime)
-            {
-                timeslot[i] = newTime;
-                subject[i] = subjects;
-                return;
-            }
-        }
-    }
-
-    void displayTimeTable()
-    {
-        cout << "Time table for " << day << endl;
-        for (size_t i = 0; i < timeslot.size(); i++)
-        {
-            cout << "Time Slot: " << timeslot[i] << " - Subject: " << subject[i] << endl;
-        }
+        return num1 + num2;
     }
 };
-int main()
-{
-    TimeTable monday("monday");
-    monday.add_subject("9AM - 10 PM", "Mathematics");
-    monday.add_subject("11AM - 12 PM", "Physics");
-    monday.add_subject("12AM - 1 PM", "Mathematics");
-
-    monday.displayTimeTable();
-
-    monday.changeSlot("9AM - 10PM", "3PM - 4PM", "Fundamental of Programming");
-
-    cout << endl;
-    cout << "Updated TimeTable " << endl;
-    monday.displayTimeTable();
-}
