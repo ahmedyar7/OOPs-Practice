@@ -424,19 +424,250 @@
 
 // * Funciton overloading in CPP:
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class MathsOperations
-{
+// class MathsOperations
+// {
 
-public:
-    int add(int num1, int num2)
-    {
-        return num1 + num2;
-    }
-    double add(double num1, double num2)
-    {
-        return num1 + num2;
-    }
-};
+// public:
+//     int add(int num1, int num2)
+//     {
+//         return num1 + num2;
+//     }
+//     double add(double num1, double num2)
+//     {
+//         return num1 + num2;
+//     }
+
+//     int subtract(int num1, int num2)
+//     {
+//         return num1 - num2;
+//     }
+//     double subtract(double num1, double num2)
+//     {
+//         return num1 - num2;
+//     }
+
+//     int divide(int num1, int num2)
+//     {
+//         return num1 / num2;
+//     }
+//     double divide(double num1, double num2)
+//     {
+//         return num1 / num2;
+//     }
+
+//     int multiply(int num1, int num2)
+//     {
+//         return num1 * num2;
+//     }
+//     double multiply(double num1, double num2)
+//     {
+//         return num1 * num2;
+//     }
+// };
+
+// int main()
+// {
+//     MathsOperations math;
+//     int num1, num2;
+//     cout << "Enter the First Number: ";
+//     cin >> num1 >> num2;
+
+//     // * Integer Arguments
+
+//     cout << "Addition: " << math.add(num1, num2) << endl;
+//     cout << "Subtraction: " << math.subtract(num1, num2) << endl;
+//     cout << "Multiplication: " << math.multiply(num1, num2) << endl;
+//     cout << "Division: " << math.divide(num1, num2) << endl;
+
+//     // * Floating Point Arguments
+
+//     double num3, num4;
+//     cout << "Enter the Number: ";
+//     cin >> num2 >> num3;
+
+//     cout << "Addition: " << math.add(num3, num4) << endl;
+//     cout << "Subtraction: " << math.subtract(num3, num4) << endl;
+//     cout << "Multiplication: " << math.multiply(num3, num4) << endl;
+//     cout << "Division: " << math.divide(num3, num4) << endl;
+
+//     return 0;
+// }
+
+// Create a class Person with data members name and age. Implement a copy constructor to create a deep copy of a Person object. Test the copy constructor by creating a new object from an existing one and modifying the data of one object to see if changes reflect in the other.
+
+// #include <iostream>
+// using namespace std;
+
+// class Person
+// {
+// private:
+//     string name;
+//     string age;
+//     string gender;
+
+// public:
+//     // * Constructor
+//     Person(string name, string age, string gender)
+//     {
+//         this->name = name;
+//         this->age = age;
+//         this->gender = gender;
+//     }
+
+//     // * Setters
+//     void set_name(string new_name) { name = new_name; }
+//     void set_age(string new_age) { age = new_age; }
+//     void set_gender(string new_gender) { gender = new_gender; }
+
+//     // * Getter
+//     string get_name() { return name; }
+//     string get_age() { return age; }
+//     string get_gender() { return gender; }
+
+//     // * Copy Constructor
+//     Person(Person &obj)
+//     {
+//         obj.name;
+//         obj.age;
+//         obj.gender;
+//     }
+
+//     // * Memeber Function
+//     void displayInfo()
+//     {
+//         cout << "Name: " << get_name() << endl;
+//         cout << "Age: " << get_age() << endl;
+//         cout << "Gender: " << get_gender() << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Person p1("Ahmed Yar", "12", "Male");
+//     p1.displayInfo();
+
+//     Person p2 = p1;
+
+//     p2.set_name("Umar");
+//     p2.set_age("111");
+//     p2.set_gender("Female");
+
+//     p2.displayInfo();
+// }
+
+// esign a class Rectangle with data members length and width. Include member functions to calculate the area and perimeter of the rectangle. Create multiple objects of Rectangle class and perform operations such as area calculation, changing dimensions, and comparing areas of different rectangles.
+
+// #include <iostream>
+// using namespace std;
+
+// class Rectangle
+// {
+// private:
+//     int length;
+//     int width;
+
+// public:
+//     Rectangle(){};
+//     Rectangle(int length, int width)
+//     {
+//         this->length = length;
+//         this->width = width;
+//     }
+
+//     int calc_area()
+//     {
+//         return length * width;
+//     }
+//     int calc_perimeter()
+//     {
+//         return 2 * (length + width);
+//     }
+
+//     void compare(Rectangle &obj1, Rectangle obj2)
+//     {
+//         if ((obj1.length == obj2.length) && (obj1.width == obj2.width))
+//         {
+//             cout << "The Rectangle are equal " << endl;
+//         }
+//         else
+//             cout << "The are not equal " << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Rectangle r1(12, 12);
+//     Rectangle r2(20, 20);
+
+//     cout << "Area Rectangle 1" << r1.calc_area() << endl;
+//     cout << "Area Rectangle 2" << r2.calc_area() << endl;
+
+//     cout << "Perimeter Rectangle 1" << r1.calc_perimeter() << endl;
+//     cout << "Perimeter Rectangle 2" << r2.calc_perimeter() << endl;
+
+//     Rectangle rec;
+
+//     rec.compare(r1, r2);
+// }
+
+// * Triangle Comparison
+
+// #include <iostream>
+// #include <cmath>
+
+// using namespace std;
+
+// class Triangle
+// {
+// private:
+//     int side1, side2, side3;
+
+// public:
+//     Triangle(int side1, int side2, int side3)
+//     {
+//         this->side1 = side1;
+//         this->side2 = side2;
+//         this->side3 = side3;
+//     }
+
+//     int calc_area()
+//     {
+//         long double S = (side1 + side2 + side3) / 2.0;
+//         long double result = sqrt(S * (S - side1) * (S - side2) * (S - side3));
+//         return result;
+//     }
+
+//     void compair()
+//     {
+//         if (side1 == side2 && side2 == side3)
+//         {
+//             cout << "Equlitral Triange" << endl;
+//         }
+//         else if (side1 == side2 || side2 == side3 || side1 == side3)
+//         {
+//             cout << "Isoceles Triangle" << endl;
+//         }
+//         else
+//         {
+//             cout << "Scalene Triangle" << endl;
+//         }
+//     }
+// };
+
+// int main()
+// {
+//     Triangle t1(12, 12, 12);
+//     cout << "Area: " << t1.calc_area() << endl;
+//     t1.compair();
+
+//     Triangle t2(12, 12, 2);
+//     cout << "Area: " << t1.calc_area() << endl;
+//     t2.compair();
+
+//     Triangle t3(12, 112, 2);
+//     cout << "Area: " << t3.calc_area() << endl;
+//     t3.compair();
+// }
