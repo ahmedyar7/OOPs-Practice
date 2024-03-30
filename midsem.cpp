@@ -671,3 +671,153 @@
 //     cout << "Area: " << t3.calc_area() << endl;
 //     t3.compair();
 // }
+
+// ? Extend the Rectangle class to include overloaded constructors for creating rectangles with default dimensions and specific dimensions. Implement a copy constructor to create a copy of a Rectangle object. Test both function overloading and copy constructor by creating and copying objects of the Rectangle class.
+
+// #include <iostream>
+// using namespace std;
+
+// class Rectangle
+// {
+// private:
+//     int length;
+//     int width;
+
+// public:
+//     // * Default Constructor
+//     Rectangle()
+//     {
+//         this->length = 10;
+//         this->width = 20;
+//     }
+
+//     // * Parameterized Constructor
+//     Rectangle(int length, int width)
+//     {
+//         this->length = length;
+//         this->width = width;
+//     }
+
+//     // * Setters
+//     void set_length(int new_length) { length = new_length; }
+//     void set_width(int new_width) { width = new_width; }
+
+//     // * Getters
+//     int get_length() { return length; }
+//     int get_width() { return width; }
+
+//     // * Member Function
+//     int calc_area()
+//     {
+//         return length * width;
+//     }
+
+//     int calc_perimeter()
+//     {
+//         return 2 * (length + width);
+//     }
+
+//     void compare(Rectangle &obj1, Rectangle &obj2)
+//     {
+//         if (obj1.length == obj2.length && obj2.width == obj1.width)
+//         {
+//             cout << "The Rectangle are equal " << endl;
+//         }
+//         else
+//             cout << "The Rectangle are not equal " << endl;
+//     }
+
+//     // * Copy Constructor
+//     Rectangle(Rectangle &obj)
+//     {
+//         obj.length = length;
+//         obj.width = width;
+//     }
+// };
+
+// // * Driver Program
+
+// int main()
+// {
+//     Rectangle r1(12, 12);
+//     Rectangle r2(122, 122);
+//     Rectangle r3;
+//     Rectangle r4;
+
+//     cout << "Area of Rectangle 1: " << r1.calc_area() << endl;
+//     cout << "Area of Rectangle 2: " << r2.calc_area() << endl;
+
+//     cout << endl;
+
+//     cout << "Perimeter of Rectangle 1: " << r1.calc_perimeter() << endl;
+//     cout << "Perimeter of Rectangle 2: " << r2.calc_perimeter() << endl;
+
+//     cout << endl;
+
+//     cout << "Area of Rectangle 3: " << r3.calc_area() << endl;
+//     cout << "Perimeter of Rectangle 3: " << r3.calc_perimeter() << endl;
+
+//     r4.compare(r1, r2);
+// }
+
+// ? Design a class BankAccount with private data members balance, accountNumber, and accountHolderName. Include member functions to deposit, withdraw, and display account details. Ensure that withdrawal is not allowed if the balance is insufficient. Test the encapsulation by accessing/modifying private members through member functions.
+
+#include <iostream>
+using namespace std;
+
+class BankAccount
+{
+private:
+    double balance;
+    string accNum;
+    string accHolderName;
+
+public:
+    BankAccount(double balance, string accNum, string accHolderName)
+    {
+        this->balance = balance;
+        this->accNum = accNum;
+        this->accHolderName = accHolderName;
+    }
+
+    // * Setters
+    void set_balance(double new_balance) { balance = new_balance; }
+    void set_accNum(double new_accNum) { accNum = new_accNum; }
+    void set_accHolderName(double new_accHolderName) { accHolderName = new_accHolderName; }
+
+    // * Getters
+    double get_balance() { return balance; }
+    string get_accNum() { return accNum; }
+    string get_accHolderName() { return accHolderName; }
+
+    // * Member Functions:
+    int deposit(const int &amount)
+    {
+        balance += amount;
+    }
+
+    int withdrawl(const int &amount)
+    {
+        if (amount <= balance)
+        {
+            balance -= amount;
+        }
+        else
+            cout << "Transaction is not possible " << endl;
+    }
+
+    void display()
+    {
+        cout << "Balance: " << get_balance() << endl;
+        cout << "Account Number: " << get_accNum() << endl;
+        cout << "Holder Name: " << get_accHolderName() << endl;
+    }
+
+    // * Copy Constructor
+    BankAccount(BankAccount &obj)
+    {
+        obj.balance = balance;
+        obj.accNum = accNum;
+        obj.accHolderName = accHolderName;
+    }
+};
