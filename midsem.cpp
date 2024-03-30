@@ -762,62 +762,120 @@
 
 // ? Design a class BankAccount with private data members balance, accountNumber, and accountHolderName. Include member functions to deposit, withdraw, and display account details. Ensure that withdrawal is not allowed if the balance is insufficient. Test the encapsulation by accessing/modifying private members through member functions.
 
+// #include <iostream>
+// using namespace std;
+
+// class BankAccount
+// {
+// private:
+//     double balance;
+//     string accNum;
+//     string accHolderName;
+
+// public:
+//     BankAccount(double balance, string accNum, string accHolderName)
+//     {
+//         this->balance = balance;
+//         this->accNum = accNum;
+//         this->accHolderName = accHolderName;
+//     }
+
+//     // * Setters
+//     void set_balance(double new_balance) { balance = new_balance; }
+//     void set_accNum(string new_accNum) { accNum = new_accNum; }
+//     void set_accHolderName(string new_accHolderName) { accHolderName = new_accHolderName; }
+
+//     // * Getters
+//     double get_balance() { return balance; }
+//     string get_accNum() { return accNum; }
+//     string get_accHolderName() { return accHolderName; }
+
+//     // * Member Functions:
+//     int deposit(const int &amount)
+//     {
+//         balance += amount;
+//         return balance;
+//     }
+
+//     int withdrawl(const int &amount)
+//     {
+//         if (amount <= balance)
+//         {
+//             balance -= amount;
+//             return balance;
+//         }
+//         else
+//         {
+//             cout << "Transaction is not possible " << endl;
+//             return 0;
+//         }
+//     }
+
+//     void display()
+//     {
+//         cout << "Balance: " << get_balance() << endl;
+//         cout << "Account Number: " << get_accNum() << endl;
+//         cout << "Holder Name: " << get_accHolderName() << endl;
+//     }
+
+//     // * Copy Constructor
+//     BankAccount(BankAccount &obj)
+//     {
+//         obj.balance = balance;
+//         obj.accNum = accNum;
+//         obj.accHolderName = accHolderName;
+//     }
+// };
+
+// int main()
+// {
+//     BankAccount acc_1(1000.00, "123", "Ahmed Yar");
+//     cout << " Deposited: " << acc_1.deposit(1000) << endl;
+//     cout << "Withdrawl: " << acc_1.withdrawl(500) << endl;
+//     acc_1.display();
+
+//     cout << endl;
+
+//     BankAccount acc_2 = acc_1;
+//     acc_2.set_balance(5000.00);
+//     acc_2.set_accNum("546");
+//     acc_2.set_accHolderName("Umar Malik");
+
+//     cout << "Deposited: " << acc_2.deposit(500.5) << endl;
+//     cout << "Withdrawl: " << acc_2.withdrawl(200.5) << endl;
+
+//     acc_2.display();
+// }
+
+// ? Define a class Counter with a static member variable count and a static member function increment(). Create multiple objects of the Counter class and call the increment() function to increment the count. Display the count after each increment operation
+
 #include <iostream>
 using namespace std;
 
-class BankAccount
+class Counter
 {
 private:
-    double balance;
-    string accNum;
-    string accHolderName;
+    static int count;
 
 public:
-    BankAccount(double balance, string accNum, string accHolderName)
+    void counterIncrement()
     {
-        this->balance = balance;
-        this->accNum = accNum;
-        this->accHolderName = accHolderName;
+        count++;
     }
-
-    // * Setters
-    void set_balance(double new_balance) { balance = new_balance; }
-    void set_accNum(double new_accNum) { accNum = new_accNum; }
-    void set_accHolderName(double new_accHolderName) { accHolderName = new_accHolderName; }
-
-    // * Getters
-    double get_balance() { return balance; }
-    string get_accNum() { return accNum; }
-    string get_accHolderName() { return accHolderName; }
-
-    // * Member Functions:
-    int deposit(const int &amount)
+    int getCounter()
     {
-        balance += amount;
-    }
-
-    int withdrawl(const int &amount)
-    {
-        if (amount <= balance)
-        {
-            balance -= amount;
-        }
-        else
-            cout << "Transaction is not possible " << endl;
-    }
-
-    void display()
-    {
-        cout << "Balance: " << get_balance() << endl;
-        cout << "Account Number: " << get_accNum() << endl;
-        cout << "Holder Name: " << get_accHolderName() << endl;
-    }
-
-    // * Copy Constructor
-    BankAccount(BankAccount &obj)
-    {
-        obj.balance = balance;
-        obj.accNum = accNum;
-        obj.accHolderName = accHolderName;
+        return count;
     }
 };
+
+int Counter::count = 0;
+
+int main()
+{
+    Counter c;
+    for (int i = 0; i < 10; i++)
+    {
+        c.counterIncrement();
+        cout << c.getCounter() << endl;
+    }
+}
