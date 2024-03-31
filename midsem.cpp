@@ -916,26 +916,364 @@
 //     ptranimal->sound(); // (->) Member access through the pointer;
 // }
 
+// #include <iostream>
+// using namespace std;
+
+// class MyClass
+// {
+// public:
+//     int data;
+//     void display()
+//     {
+//         cout << "Data: " << data << endl;
+//     }
+// };
+
+// int main()
+// {
+//     MyClass obj1;
+//     obj1.data = 10;
+//     obj1.display(); // Using the . metod access operator
+
+//     MyClass *ptr = &obj1;
+//     ptr->data = 12; // Using the pointer the member access opertor (->)
+//     ptr->display();
+// }
+
+// * Operator Overloading in CPP
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a, b;
+
+// public:
+//     Binary(int a, int b)
+//     {
+//         this->a = a;
+//         this->b = b;
+//     }
+
+//     Binary operator+(Binary &obj1)
+//     {
+//         return Binary(a + obj1.a, b + obj1.b);
+//     }
+//     void display()
+//     {
+//         cout << "( " << a << " ," << b << " )" << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(50, 50);
+//     Binary b2(20, 20);
+
+//     Binary result = b1 + b2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a;
+
+// public:
+//     Binary(int a)
+//     {
+//         this->a = a;
+//     }
+
+//     Binary operator+(Binary &obj1)
+//     {
+//         return Binary(a + obj1.a);
+//     }
+
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(5);
+//     Binary b2(5);
+
+//     Binary result = b1 + b2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a;
+
+// public:
+//     Binary(int a)
+//     {
+//         this->a = a;
+//     }
+//     Binary operator+(Binary &obj)
+//     {
+//         return Binary(a + obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(100);
+//     Binary b2(100);
+
+//     Binary result = b1 + b2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a, b;
+
+// public:
+//     Binary(int a, int b)
+//     {
+//         this->a = a;
+//         this->b = b;
+//     }
+//     Binary operator-(Binary &obj1)
+//     {
+//         return Binary(a + obj1.a, b + obj1.b);
+//     }
+//     void display()
+//     {
+//         cout << a << " " << b << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(10, 10);
+//     Binary b2(1, 1);
+
+//     Binary result = b1 - b2;
+//     result.display();
+// }
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a;
+
+// public:
+//     Binary(int a)
+//     {
+//         this->a = a;
+//     }
+//     Binary operator-(Binary &obj)
+//     {
+//         return Binary(a - obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(100);
+//     Binary b2(1);
+
+//     Binary result = b1 - b2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+
+// private:
+//     int a, b;
+
+// public:
+//     Binary(int a, int b)
+//     {
+//         this->a = a;
+//         this->b = b;
+//     }
+//     Binary operator*(Binary &obj)
+//     {
+//         return Binary(a * obj.a, b * obj.b);
+//     }
+//     void display()
+//     {
+//         cout << a << " " << b << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(10, 10);
+//     Binary b2(20, 20);
+
+//     Binary b3 = b1 * b2;
+
+//     b3.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a;
+
+// public:
+//     Binary(int a)
+//     {
+//         this->a = a;
+//     }
+//     Binary operator*(Binary &obj)
+//     {
+//         return Binary(a * obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(99);
+//     Binary b2(33);
+
+//     Binary result = b1 * b2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a, b;
+
+// public:
+//     Binary(int a, int b)
+//     {
+//         this->a = a;
+//         this->b = b;
+//     }
+//     Binary operator/(Binary &obj)
+//     {
+//         return Binary(a / obj.a, b / obj.b);
+//     }
+//     void display()
+//     {
+//         cout << a << " " << b << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b1(10, 2);
+//     Binary b2(2, 2);
+
+//     Binary result = b1 / b2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int a;
+
+// public:
+//     Binary(int a)
+//     {
+//         this->a = a;
+//     }
+//     Binary operator/(Binary &obj)
+//     {
+//         return Binary(a / obj.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Binary b(10);
+//     Binary b1(5);
+
+//     Binary res = b / b1;
+//     res.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class String
+// {
+// private:
+//     string a;
+
+// public:
+//     String(string a)
+//     {
+//         this->a = a;
+//     }
+//     String operator+(String &o)
+//     {
+//         return String(a + o.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     String s1("Ahmed");
+//     String s2("Yar");
+
+//     String result = s1 + s2;
+//     result.display();
+// }
+
+// * Matrix Addition using the operator overloading in cpp
+
 #include <iostream>
+#include <vector>
 using namespace std;
 
-class MyClass
+class Binary
 {
+private:
+    vector<int> data;
+
 public:
-    int data;
-    void display()
+    Binary(vector<int> data)
     {
-        cout << "Data: " << data << endl;
+        this->data = data;
     }
 };
-
-int main()
-{
-    MyClass obj1;
-    obj1.data = 10;
-    obj1.display(); // Using the . metod access operator
-
-    MyClass *ptr = &obj1;
-    ptr->data = 12; // Using the pointer the member access opertor (->)
-    ptr->display();
-}
