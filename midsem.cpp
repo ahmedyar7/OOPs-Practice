@@ -1417,36 +1417,419 @@
 //     result.display();
 // }
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-class Binary
-{
-private:
-    int array[3][3];
+// class Binary
+// {
+// private:
+//     int array[3][3];
 
-public:
-    Binary(int new_array[3][3])
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                array[i][j] = new_array[i][j];
-            }
-        }
-    }
-    Binary operator*(const Binary &o)
-    {
-        int result_array[3][3];
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                for (int k = 0; k < 3; k++)
-                {
-                }
-            }
-        }
-    }
-};
+// public:
+//     Binary(int new_array[3][3])
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 array[i][j] = new_array[i][j];
+//             }
+//         }
+//     }
+//     Binary operator*(const Binary &o)
+//     {
+//         int result_array[3][3];
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 for (int k = 0; k < 3; k++)
+//                 {
+//                     result_array[i][j] = array[i][k] * o.array[k][j];
+//                 }
+//             }
+//         }
+//         return Binary(result_array);
+//     }
+//     void display() const
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 cout << array[i][j] << "  ";
+//             }
+//             cout << " \n\n";
+//         }
+//     }
+// };
+
+// int main()
+// {
+//     int array1[3][3], array2[3][3];
+
+//     cout << "Enter the Element : " << endl;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             cin >> array1[i][j];
+//         }
+//     }
+
+//     cout << "Enter the Element : " << endl;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             cin >> array2[i][j];
+//         }
+//     }
+
+//     Binary b1(array1);
+//     Binary b2(array2);
+
+//     Binary result = b1 * b2;
+//     result.display();
+// }
+
+// ? Overloading the Uninary Operator in C++
+
+// * Pre Increments
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int count;
+
+// public:
+//     Uninary(int count)
+//     {
+//         this->count = count;
+//     }
+//     Uninary operator++()
+//     {
+//         count++;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary c(0);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         ++c;
+//         c.display();
+//     }
+// }
+
+// * Post Increment:
+
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int count;
+
+// public:
+//     Uninary(int count)
+//     {
+//         this->count = count;
+//     }
+//     Uninary operator++(int)
+//     {
+//         Uninary *temp;
+//         count++;
+//         return *temp;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary c(1);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         c++;
+//         c.display();
+//     }
+// }
+
+// * Pre Decrement
+
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int count;
+
+// public:
+//     Uninary(int count)
+//     {
+//         this->count = count;
+//     }
+//     Uninary operator--()
+//     {
+//         count--;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary c(10);
+//     for (int i = 0; i < 10; i++)
+//     {
+//         --c;
+//         c.display();
+//     }
+// }
+
+// * Post derement
+
+// #include <iostream>
+// using namespace std;
+
+// class Uninary
+// {
+// private:
+//     int count;
+
+// public:
+//     Uninary(int count)
+//     {
+//         this->count = count;
+//     }
+//     Uninary operator--(int)
+//     {
+//         Uninary *temp;
+//         count--;
+//         return *temp;
+//     }
+//     void display()
+//     {
+//         cout << count << endl;
+//     }
+// };
+// int main()
+// {
+//     Uninary c(10);
+//     for (int i = 0; i < 110; i++)
+//     {
+//         c--;
+//         c.display();
+//     }
+// }
+
+// * Overloading the Relationship operator
+
+// #include <iostream>
+// using namespace std;
+
+// class Relation
+// {
+// private:
+//     int a;
+
+// public:
+//     Relation(int a)
+//     {
+//         this->a = a;
+//     }
+//     Relation operator==(const Relation &o)
+//     {
+
+//         return Relation(a == o.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Relation r1(2);
+//     Relation r2(20);
+
+//     Relation result = r1 == r2;
+//     result.display();
+// }
+
+// * overloading the != operator
+
+// #include <iostream>
+// using namespace std;
+
+// class Relation
+// {
+// private:
+//     int a;
+
+// public:
+//     Relation(int a)
+//     {
+//         this->a = a;
+//     }
+//     Relation operator!=(const Relation o)
+//     {
+//         return Relation(a != o.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+
+// * Overloading the >=
+
+// int main()
+// {
+//     Relation r1(100);
+//     Relation r2(100);
+
+//     Relation result = r1 != r2;
+//     result.display();
+// }
+// #include <iostream>
+// using namespace std;
+
+// class Relation
+// {
+// private:
+//     int a;
+
+// public:
+//     Relation(int a)
+//     {
+//         this->a = a;
+//     }
+//     Relation operator>=(const Relation o)
+//     {
+//         return Relation(a >= o.a);
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Relation r1(1);
+//     Relation r2(10);
+
+//     Relation result = r1 >= r2;
+//     result.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class InputOutput
+// {
+// public:
+//     string name;
+//     int age;
+
+// public:
+//     friend istream &operator>>(istream &in, InputOutput &o)
+//     {
+//         in >> o.name >> o.age;
+//     }
+//     friend ostream &operator<<(ostream &os, InputOutput &o)
+//     {
+//         os << o.name << endl;
+//         os << o.age << endl;
+//     }
+// };
+
+// int main()
+// {
+//     InputOutput input;
+//     cin >> input.name >> input.age;
+//     cout << input.name << input.age << endl;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class InputOutput
+// {
+// public:
+//     int age;
+//     string name;
+
+//     friend istream &operator>>(istream &in, InputOutput &o)
+//     {
+//         in >> o.name;
+//         in >> o.age;
+//     }
+
+//     friend ostream &operator<<(ostream &os, InputOutput &o)
+//     {
+//         os << o.name << endl;
+//         os << o.age << endl;
+//     }
+
+//     void display()
+//     {
+//         cout << *this << endl;
+//     }
+// };
+// int main()
+// {
+//     InputOutput input;
+//     cin >> input.name;
+//     cin >> input.age;
+
+//     input.display();
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Assingment
+// {
+// private:
+//     int a;
+
+// public:
+//     Assingment(int a)
+//     {
+//         this->a = a;
+//     }
+
+//     Assingment operator=(Assingment &obj)
+//     {
+//         if (this != &obj)
+//         {
+//             a = obj.a;
+//         }
+//         return *this;
+//     }
+//     void display()
+//     {
+//         cout << a << endl;
+//     }
+// };
+// int main()
+// {
+//     Assingment a(4234);
+//     Assingment b(434);
+
+//     b = a;
+
+//     b.display();
+// }
