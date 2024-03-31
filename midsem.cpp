@@ -1262,18 +1262,191 @@
 
 // * Matrix Addition using the operator overloading in cpp
 
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int array[3][3];
+
+// public:
+//     Binary() {}
+
+//     Binary(int new_array[3][3])
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 array[i][j] = new_array[i][j];
+//             }
+//         }
+//     }
+
+//     Binary operator+(const Binary &obj)
+//     {
+//         int result_array[3][3];
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 result_array[i][j] = array[i][j] + obj.array[i][j];
+//             }
+//         }
+//         return Binary(result_array);
+//     }
+
+//     void display() const
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 cout << array[i][j] << " ";
+//             }
+//             cout << endl;
+//         }
+//     }
+// };
+
+// int main()
+// {
+//     int array1[3][3], array2[3][3];
+
+//     cout << "Enter the first array: " << endl;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             cin >> array1[i][j];
+//         }
+//     }
+
+//     cout << "Enter the second array: " << endl;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             cin >> array2[i][j];
+//         }
+//     }
+
+//     Binary b1(array1);
+//     Binary b2(array2);
+
+//     Binary result = b1 + b2;
+
+//     cout << "Resultant Matrix after Addition:" << endl;
+//     result.display();
+
+//     return 0;
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class Binary
+// {
+// private:
+//     int array[3][3];
+
+// public:
+//     Binary(int new_array[3][3])
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 array[i][j] = new_array[i][j];
+//             }
+//         }
+//     }
+
+//     Binary operator-(const Binary &obj)
+//     {
+//         int result_array[3][3];
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 result_array[i][j] = array[i][j] - obj.array[i][j];
+//             }
+//         }
+//         return Binary(result_array);
+//     }
+//     void display() const
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             for (int j = 0; j < 3; j++)
+//             {
+//                 cout << array[i][j] << "  ";
+//             }
+//             cout << "\n\n";
+//         }
+//     }
+// };
+// int main()
+// {
+//     int array1[3][3], array2[3][3];
+
+//     cout << "Enter the Element : " << endl;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             cin >> array1[i][j];
+//         }
+//     }
+
+//     cout << "Enter the Element : " << endl;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             cin >> array2[i][j];
+//         }
+//     }
+
+//     Binary b1(array1);
+//     Binary b2(array2);
+
+//     Binary result = b1 - b2;
+//     result.display();
+// }
+
 #include <iostream>
-#include <vector>
 using namespace std;
 
 class Binary
 {
 private:
-    vector<int> data;
+    int array[3][3];
 
 public:
-    Binary(vector<int> data)
+    Binary(int new_array[3][3])
     {
-        this->data = data;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                array[i][j] = new_array[i][j];
+            }
+        }
+    }
+    Binary operator*(const Binary &o)
+    {
+        int result_array[3][3];
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                for (int k = 0; k < 3; k++)
+                {
+                }
+            }
+        }
     }
 };
