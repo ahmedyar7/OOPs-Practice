@@ -187,44 +187,181 @@
 // This is a keyword which is the pointer which points to the object invokes the member functions.
 // This also represent the instance of the function.
 
+// #include <iostream>
+// using namespace std;
+
+// class BaseClass
+// {
+// public:
+//     int var_base = 12;
+//     void display()
+//     {
+//         cout << "Displaying base class var1 " << var_base << endl;
+//     }
+// };
+
+// class DerivedClass : public BaseClass
+// {
+// public:
+//     int var_derived = 32;
+//     void display()
+//     {
+//         cout << "Displaying derived class var1 " << var_derived << endl;
+//         cout << "Displaying base class var1 " << var_base << endl;
+//     }
+// };
+
+// int main()
+// {
+//     BaseClass *baseclassptr;
+//     BaseClass obj_base;
+//     DerivedClass obj_dervied;
+
+//     baseclassptr = &obj_dervied;
+//     baseclassptr->var_base = 34;
+//     baseclassptr->display();
+
+//     DerivedClass *dervied_pointer = &obj_dervied;
+//     dervied_pointer->var_derived = 2324;
+//     dervied_pointer->var_base = 32412;
+//     dervied_pointer->display();
+
+//     return 0;
+// }
+
+// ? Create a base class called Shape with a virtual function area(). Then create two derived classes, Rectangle and Circle, each with their own implementation of the area() function. Now, declare a pointer to the base class and dynamically allocate memory for objects of both derived classes. Use this pointer to call the area() function for each object.
+
+// #include <iostream>
+// using namespace std;
+
+// class Shape
+// {
+// public:
+//     virtual void area() const = 0;
+// };
+
+// class Rectangle : public Shape
+// {
+// private:
+//     int length, width;
+
+// public:
+//     Rectangle(int length, int width) : Shape()
+//     {
+//         this->length = length;
+//         this->width = width;
+//     }
+//     void area() const override
+//     {
+//         int area = length * width;
+//         cout << "Rectangle Area: " << area << endl;
+//     }
+// };
+
+// class Circle : public Shape
+// {
+// private:
+//     int radius;
+
+// public:
+//     Circle(int radius) : Shape()
+//     {
+//         this->radius = radius;
+//     }
+//     void area() const override
+//     {
+//         int area = (3.14159) * radius * radius;
+//         cout << "Area of Circle: " << area << endl;
+//     }
+// };
+
+// int main()
+// {
+//     Shape *shape_ptr;
+
+//     Rectangle r1(32, 42);
+//     Circle c1(234);
+
+//     shape_ptr = &r1;
+//     shape_ptr->area();
+// }
+
+// ? Develop a base class Animal with virtual functions sound() and move(). Derive two classes, Dog and Bird, implementing these functions differently. Create a pointer to the base class and use it to access the sound() and move() functions for both derived classes.
+
 #include <iostream>
 using namespace std;
 
-class BaseClass
+class Animal
 {
 public:
-    int var_base = 12;
-    void display()
-    {
-        cout << "Displaying base class var1 " << var_base << endl;
-    }
+    virtual void sound();
+    virtual void move();
 };
-
-class DerivedClass : public BaseClass
+class Dog : public Animal
 {
 public:
-    int var_derived = 32;
-    void display()
+    void sound() override
     {
-        cout << "Displaying derived class var1 " << var_derived << endl;
-        cout << "Displaying base class var1 " << var_base << endl;
+        cout << "DOG BARKS" << endl;
+    }
+    void move() override
+    {
+        cout << "DOG MOVES" << endl;
     }
 };
-
+class Cat : public Animal
+{
+public:
+    void sound() override
+    {
+        cout << "CAT MEOWS" << endl;
+    }
+    void move() override
+    {
+        cout << "CAT MOVES" << endl;
+    }
+};
 int main()
 {
-    BaseClass *baseclassptr;
-    BaseClass obj_base;
-    DerivedClass obj_dervied;
+    Dog dog;
+    Cat cat;
+    Animal *animal_ptr;
 
-    baseclassptr = &obj_dervied;
-    baseclassptr->var_base = 34;
-    baseclassptr->display();
-
-    DerivedClass *dervied_pointer = &obj_dervied;
-    dervied_pointer->var_derived = 2324;
-    dervied_pointer->var_base = 32412;
-    dervied_pointer->display();
-
-    return 0;
+    animal_ptr = &dog;
+    animal_ptr->move();
+    animal_ptr->sound();
+    animal_ptr = &cat;
+    cout << endl;
+    animal_ptr->move();
+    animal_ptr->sound();
 }
+
+// Design a base class Vehicle with virtual functions startEngine() and stopEngine(). Create derived classes Car and Motorcycle implementing these functions. Declare a pointer to the base class and dynamically allocate memory for objects of both derived classes. Use this pointer to start and stop the engines of both vehicles
+
+// #include <iostream>
+// using namespace std;
+
+// class Animal
+// {
+// public:
+//     virtual void sound();
+// };
+// class Dog : public Animal
+// {
+// public:
+//     void sound() override
+//     {
+//         cout << "DOG BARKS" << endl;
+//     }
+// };
+// int main()
+
+// {
+//     Dog dog;
+//     Animal *animal_ptr[5] = &dog;
+//     for (int i = 0; i < 5; i++)
+//     {
+
+//         animal_ptr[i]->sound();
+//     }
+// }
