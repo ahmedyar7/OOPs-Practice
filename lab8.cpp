@@ -115,46 +115,116 @@
 //     ptr->getData();
 // }
 
+// #include <iostream>
+// using namespace std;
+
+// class Shop
+// {
+// private:
+//     int id;
+//     float price;
+
+// public:
+//     void set_data(int a, float b)
+//     {
+//         id = a;
+//         price = b;
+//     }
+//     void get_data(void)
+//     {
+//         cout << "Code of this item is " << id << endl;
+//         cout << "Price of this items is " << price << endl;
+//     }
+// };
+
+// int main()
+// {
+//     int size = 3;
+//     Shop *ptr = new Shop[size];
+//     Shop *ptrTemp = ptr;
+//     int p, q;
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         cout << "Id and Price of item " << i + 1;
+//         cin >> p >> q;
+//         ptr->set_data(p, q);
+//         ptr++;
+//     }
+//     for (int i = 0; i < size; i++)
+//     {
+//         cout << "Item number: " << i + 1;
+//         ptr->get_data();
+//         ptr++;
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+
+// class A
+// {
+
+// private:
+//     int a;
+
+// public:
+//     void set_data(int a)
+//     {
+//         this->a = a;
+//     }
+//     void get_data()
+//     {
+//         cout << "The value of a is " << a << endl;
+//     }
+// };
+// int main()
+// {
+//     A a;
+//     a.set_data(232);
+//     a.get_data();
+// }
+// This is a keyword which is the pointer which points to the object invokes the member functions.
+// This also represent the instance of the function.
+
 #include <iostream>
 using namespace std;
 
-class Shop
+class BaseClass
 {
-private:
-    int id;
-    float price;
-
 public:
-    void set_data(int a, float b)
+    int var_base = 12;
+    void display()
     {
-        id = a;
-        price = b;
+        cout << "Displaying base class var1 " << var_base << endl;
     }
-    void get_data(void)
+};
+
+class DerivedClass : public BaseClass
+{
+public:
+    int var_derived = 32;
+    void display()
     {
-        cout << "Code of this item is " << id << endl;
-        cout << "Price of this items is " << price << endl;
+        cout << "Displaying derived class var1 " << var_derived << endl;
+        cout << "Displaying base class var1 " << var_base << endl;
     }
 };
 
 int main()
 {
-    int size = 3;
-    Shop *ptr = new Shop[size];
-    Shop *ptrTemp = ptr;
-    int p, q;
+    BaseClass *baseclassptr;
+    BaseClass obj_base;
+    DerivedClass obj_dervied;
 
-    for (int i = 0; i < size; i++)
-    {
-        cout << "Id and Price of item " << i + 1;
-        cin >> p >> q;
-        ptr->set_data(p, q);
-        ptr++;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << "Item number: " << i + 1;
-        ptr->get_data();
-        ptr++;
-    }
+    baseclassptr = &obj_dervied;
+    baseclassptr->var_base = 34;
+    baseclassptr->display();
+
+    DerivedClass *dervied_pointer = &obj_dervied;
+    dervied_pointer->var_derived = 2324;
+    dervied_pointer->var_base = 32412;
+    dervied_pointer->display();
+
+    return 0;
 }
