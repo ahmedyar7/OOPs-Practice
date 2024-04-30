@@ -23,32 +23,302 @@
 //     return 0;
 // }
 
+// #include <iostream>
+// using namespace std;
+
+// int main()
+// {
+//     int num;
+//     int denum;
+//     int output;
+
+//     cout << "Enter the number for the divison: ";
+//     cin >> num;
+//     cin >> denum;
+
+//     try
+//     {
+//         if (denum == 0)
+//         {
+//             throw denum;
+//         }
+//         else
+//         {
+//             output = num / denum;
+//         }
+//     }
+//     catch (int d)
+//     {
+//         cout << "You cannot enter zero in denominator beacause this will give the undefined terms \n";
+//     }
+// }
+
+// # File Opening exception handling in C++
+
+// #include <iostream>
+// #include <string>
+// #include <fstream>
+
+// using namespace std;
+// int main()
+// {
+//     cout << "Enter the name of the file you want to open: " << endl;
+//     string file_name;
+//     cin >> file_name;
+
+//     try
+//     {
+//         ifstream file(file_name);
+//         if (!file.is_open())
+//         {
+//             throw runtime_error("Unable to open the file");
+//         }
+//         string line;
+//         cout << "The contents of the line in the file " << endl;
+//         while (getline(file, line))
+//         {
+//             cout << line << endl;
+//         }
+//         file.close();
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error " << e.what() << endl;
+//     }
+// // }
+
+// #include <iostream>
+// #include <string>
+// #include <fstream>
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the name of the file: ";
+//     string fileName;
+//     cin >> fileName;
+
+//     try
+//     {
+//         ifstream file(fileName);
+//         if (!file.is_open())
+//         {
+//             throw runtime_error("The file could not be opened");
+//         }
+//         else
+//         {
+//             string line;
+//             while (getline(file, line))
+//             {
+//                 cout << "The contents in the file are " << endl;
+//                 cout << line << endl;
+//             }
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+
+// #include <iostream>
+// #include <fstream>
+// #include <string>
+
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the name of file: ";
+//     string filename;
+//     cin >> filename;
+
+//     try
+//     {
+//         ifstream file(filename);
+//         if (!file.is_open())
+//         {
+//             throw runtime_error("This file could not be opened");
+//         }
+//         else
+//         {
+//             string contents;
+//             while (getline(file, contents))
+//             {
+//                 cout << "The contents are: " << endl;
+//                 cout << contents << endl;
+//             }
+//         }
+//     }
+//     catch (exception &E)
+//     {
+//         cout << "Error " << E.what() << endl;
+//     }
+// }
+
+// ?Division by Zero Exception : Create a program that takes two numbers as input and performs division.Implement exception handling to catch and handle the division by zero error.
+
+// #include <iostream>
+// using namespace std;
+// int main()
+// {
+//     cout << "Enter the Numirator " << endl;
+//     int num;
+//     cin >> num;
+//     cout << "Enter denominator " << endl;
+//     int denum;
+//     cin >> denum;
+
+//     try
+//     {
+//         if (denum == 0)
+//         {
+//             throw runtime_error("The division is not possible by 0");
+//         }
+//         else
+//         {
+//             int result = 0;
+//             result = num / denum;
+//             cout << "Result: " << result << endl;
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+
+// ? Array Index Out of Bounds Exception: Write a program that initializes an array and prompts the user for an index to access. Implement exception handling to catch and handle cases where the user enters an out-of-bounds index.
+
+// #include <iostream>
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the elements: ";
+//     int num_elements;
+//     cin >> num_elements;
+//     int array[num_elements];
+
+//     for (int i = 0; i < num_elements; i++)
+//     {
+//         cin >> array[i];
+//         cout << endl;
+//         cout << array[i] << " ";
+//     }
+//     cout << endl;
+
+//     cout << "Enter the index: " << endl;
+//     int index;
+//     cin >> index;
+
+//     try
+//     {
+
+//         if (index > num_elements)
+//         {
+//             throw out_of_range("The index is out of range");
+//         }
+//         else
+//         {
+//             for (int i = 0; i < num_elements; i++)
+//             {
+//                 if (i == index)
+//                 {
+//                     cout << array[i] << endl;
+//                 }
+//             }
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+
+//  ? Develop a program that asks the user to enter their age. Implement exception handling to handle cases where the user enters invalid input (e.g., non-numeric characters).
+
+// #include <iostream>
+// #include <stdexcept>
+// using namespace std;
+// int main()
+// {
+//     cout << "Enter the Name: ";
+//     string name;
+//     cin >> name;
+
+//     try
+//     {
+//         cout << "Enter the age: ";
+//         int age;
+//         cin >> age;
+//         if (cin.fail())
+//         {
+//             throw invalid_argument("Please enter a valid input");
+//         }
+//         else
+//         {
+//             cout << "Your name is " << name << endl;
+//             cout << "Your age is " << age << endl;
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+
+// #include <iostream>
+// #include <stdexcept>
+// using namespace std;
+// int main()
+// {
+//     cout << "Enter the Price in Ruppee: ";
+//     int rupeePrice;
+
+//     try
+//     {
+//         cin >> rupeePrice;
+//         if (cin.fail())
+//         {
+//             throw invalid_argument("Enter a valid input");
+//         }
+//         else
+//         {
+//             int priceDollar;
+//             priceDollar = rupeePrice / 300;
+//             cout << "Price in Dollar: " << priceDollar << endl;
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+
 #include <iostream>
-using namespace std;
+#include <stdexcept> // for std::bad_alloc
 
 int main()
 {
-    int num;
-    int denum;
-    int output;
+    int *arr = nullptr;
+    int size;
 
-    cout << "Enter the number for the divison: ";
-    cin >> num;
-    cin >> denum;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> size;
 
     try
     {
-        if (denum == 0)
-        {
-            throw denum;
-        }
-        else
-        {
-            output = num / denum;
-        }
+        arr = new int[size]; // Dynamically allocate memory for the array
+
+        // Use the array (not implemented in this example)
+
+        delete[] arr; // Deallocate memory for the array
     }
-    catch (int d)
+    catch (const std::bad_alloc &e)
     {
-        cout << "You cannot enter zero in denominator beacause this will give the undefined terms \n";
+        std::cerr << "Error: Memory allocation failed. " << e.what() << std::endl;
     }
+
+    return 0;
 }
