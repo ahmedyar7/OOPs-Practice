@@ -296,29 +296,130 @@
 //     }
 // }
 
+// #include <iostream>
+// #include <stdexcept> // for std::bad_alloc
+
+// int main()
+// {
+//     int *arr = nullptr;
+//     int size;
+
+//     std::cout << "Enter the size of the array: ";
+//     std::cin >> size;
+
+//     try
+//     {
+//         arr = new int[size]; // Dynamically allocate memory for the array
+
+//         // Use the array (not implemented in this example)
+
+//         delete[] arr; // Deallocate memory for the array
+//     }
+//     catch (const std::bad_alloc &e)
+//     {
+//         std::cerr << "Error: Memory allocation failed. " << e.what() << std::endl;
+//     }
+
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <stdexcept>
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the size of array: ";
+//     int size;
+//     cin >> size;
+//     int *arr = nullptr;
+
+//     try
+//     {
+//         arr = new int[size];
+
+//         delete[] arr;
+//     }
+//     catch (exception bad_alloc &e)
+//     {
+//         cout << "Error" << e.what() << endl;
+
+//     }
+// }
+
+//  ? Custom Exception Handling: Design a program that calculates the factorial of a number. Implement a custom exception class for handling cases where the input is negative.
+
+// #include <iostream>
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the number: ";
+//     int number;
+//     cin >> number;
+
+//     try
+//     {
+//         if (number < 0)
+//         {
+//             throw invalid_argument("Please enter a positive number ");
+//         }
+//         else
+//         {
+//             int result = 1;
+//             for (int i = 1; i <= number; i++)
+//             {
+//                 result *= i;
+//             }
+//             cout << result << endl;
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+
+// ? Sorting Algorithm: Write a program that sorts an array of integers using a sorting algorithm such as bubble sort or quicksort. Implement exception handling to handle cases where the array is empty or contains invalid elements
+
 #include <iostream>
-#include <stdexcept> // for std::bad_alloc
+#include <stdexcept>
+
+using namespace std;
 
 int main()
 {
-    int *arr = nullptr;
-    int size;
-
-    std::cout << "Enter the size of the array: ";
-    std::cin >> size;
+    int array[] = {32, 45, 23, 52, 5423, 42423, 342, 35234, 234, 25, 2342};
+    int size = sizeof(array) / sizeof(array[0]);
 
     try
     {
-        arr = new int[size]; // Dynamically allocate memory for the array
-
-        // Use the array (not implemented in this example)
-
-        delete[] arr; // Deallocate memory for the array
+        if (size == 0)
+        {
+            throw invalid_argument("The array is empty");
+        }
+        else
+        {
+            for (int i = 0; i < size - 1; i++)
+            {
+                for (int j = i + 1; j < size; j++)
+                {
+                    if (array[j] < array[i])
+                    {
+                        int temp = array[j];
+                        array[j] = array[i];
+                        array[i] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < size; i++)
+            {
+                cout << array[i] << " ";
+            }
+        }
     }
-    catch (const std::bad_alloc &e)
+    catch (exception &e)
     {
-        std::cerr << "Error: Memory allocation failed. " << e.what() << std::endl;
+        cout << "Error: " << e.what() << endl;
     }
-
-    return 0;
 }
