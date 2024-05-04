@@ -382,44 +382,138 @@
 
 // ? Sorting Algorithm: Write a program that sorts an array of integers using a sorting algorithm such as bubble sort or quicksort. Implement exception handling to handle cases where the array is empty or contains invalid elements
 
-#include <iostream>
-#include <stdexcept>
+// #include <iostream>
+// #include <stdexcept>
 
-using namespace std;
+// using namespace std;
 
-int main()
-{
-    int array[] = {32, 45, 23, 52, 5423, 42423, 342, 35234, 234, 25, 2342};
-    int size = sizeof(array) / sizeof(array[0]);
+// int main()
+// {
+//     int array[] = {32, 45, 23, 52, 5423, 42423, 342, 35234, 234, 25, 2342};
+//     int size = sizeof(array) / sizeof(array[0]);
 
-    try
-    {
-        if (size == 0)
-        {
-            throw invalid_argument("The array is empty");
-        }
-        else
-        {
-            for (int i = 0; i < size - 1; i++)
-            {
-                for (int j = i + 1; j < size; j++)
-                {
-                    if (array[j] < array[i])
-                    {
-                        int temp = array[j];
-                        array[j] = array[i];
-                        array[i] = temp;
-                    }
-                }
-            }
-            for (int i = 0; i < size; i++)
-            {
-                cout << array[i] << " ";
-            }
-        }
-    }
-    catch (exception &e)
-    {
-        cout << "Error: " << e.what() << endl;
-    }
-}
+//     try
+//     {
+//         if (size == 0)
+//         {
+//             throw invalid_argument("The array is empty");
+//         }
+//         else
+//         {
+//             for (int i = 0; i < size - 1; i++)
+//             {
+//                 for (int j = i + 1; j < size; j++)
+//                 {
+//                     if (array[j] < array[i])
+//                     {
+//                         int temp = array[j];
+//                         array[j] = array[i];
+//                         array[i] = temp;
+//                     }
+//                 }
+//             }
+//             for (int i = 0; i < size; i++)
+//             {
+//                 cout << array[i] << " ";
+//             }
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+// ?File Handling Exception: Write a program that opens a file, reads its contents, and displays them. Implement exception handling to deal with cases where the file cannot be opened or read.
+
+// #include <iostream>
+// #include <stdexcept>
+// #include <fstream>
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the Name of the File: " << endl;
+//     string filename;
+//     cin >> filename;
+
+//     try
+//     {
+//         ifstream file(filename);
+//         if (!file.is_open())
+//         {
+//             throw runtime_error("This file donot exist");
+//         }
+//         else
+//         {
+//             string contents;
+//             cout << "The contents of the file are " << endl;
+
+//             while (getline(file, contents))
+//             {
+//                 cout << contents << endl;
+//             }
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "The Error is: " << e.what() << endl;
+//     }
+// }
+
+// #include <iostream>
+// #include <fstream>
+// #include <stdexcept>
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the name of file: " << endl;
+//     string filename;
+//     cin >> filename;
+//     try
+//     {
+//         ifstream file(filename);
+//         if (!file.is_open())
+//         {
+//             throw runtime_error("The file donot exisit");
+//         }
+//         else
+//         {
+//             cout << "The content of file are " << endl;
+//             string contents;
+//             while (getline(file, contents))
+//             {
+//                 cout << contents << endl;
+//             }
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "Error: " << e.what() << endl;
+//     }
+// }
+
+// #include <iostream>
+// using namespace std;
+// int main()
+// {
+//     cout << "Enter the first number and second: \n";
+//     int n1, n2;
+//     cin >> n1 >> n2;
+//     try
+//     {
+//         if (n2 == 0)
+//         {
+//             throw runtime_error("The number cannot be divided by zero");
+//         }
+//         else
+//         {
+//             int result = n1 / n2;
+//             cout << result << endl;
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "ERROR: " << e.what() << endl;
+//     }
+// }
