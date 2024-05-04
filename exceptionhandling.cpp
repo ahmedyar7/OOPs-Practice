@@ -517,3 +517,44 @@
 //         cout << "ERROR: " << e.what() << endl;
 //     }
 // }
+
+// #include <iostream>
+// #include <stdexcept>
+// using namespace std;
+
+// int main()
+// {
+//     cout << "Enter the name: ";
+//     string name;
+//     cin >> name;
+//     cout << "Enter the age: ";
+//     int age;
+//     cin >> age;
+
+//     try
+//     {
+//         if (cin.fail())
+//         {
+//             throw runtime_error("Please enter valid input");
+//         }
+//         else
+//         {
+//             cout << "Your name and age are" << endl;
+//             cout << name << endl;
+//             cout << age << endl;
+//         }
+//     }
+//     catch (exception &e)
+//     {
+//         cout << "ERROR_CODE: " << e.what() << endl;
+//     }
+// }
+
+#include <iostream>
+using namespace std;
+int main()
+{
+
+    int array[] = {23, 43, 2, 43, 5423, 454, 34};
+    int n = sizeof(array) / sizeof(array[0]);
+}
