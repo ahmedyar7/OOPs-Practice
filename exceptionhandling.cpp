@@ -550,11 +550,100 @@
 //     }
 // }
 
+// #include <iostream>
+// using namespace std;
+// int main()
+// {
+
+//     int array[] = {23, 43, 2, 43, 5423, 454, 34};
+//     int n = sizeof(array) / sizeof(array[0]);
+// }
+
 #include <iostream>
+#include <stdexcept>
+#include <cmath>
 using namespace std;
+
+class Exception
+{
+public:
+    int divideByZero()
+    {
+        cout << "Enter the first number: ";
+        int n1;
+        cin >> n1;
+        cout << "Enter the 2nd  number: ";
+        int n2;
+        cin >> n2;
+
+        try
+        {
+            if (n2 == 0)
+            {
+                throw runtime_error("Not possible");
+                cin >> n2;
+            }
+            else
+            {
+                int result = n1 / n2;
+                cout << "Result: " << result << endl;
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Exception: " << e.what() << endl;
+        }
+    }
+
+    int negitive_sqrt()
+    {
+        cout << "Enter a number: ";
+        int n;
+        cin >> n;
+        try
+        {
+            if (n < 0)
+            {
+                throw runtime_error("Not possible");
+            }
+            else
+            {
+                int result = sqrt(n);
+                cout << "Result :" << result << endl;
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Exception: " << e.what() << endl;
+        }
+    }
+
+    int invalid_input()
+    {
+        cout << "Enter your password: ";
+        string password;
+        cin >> password;
+        try
+        {
+            if (password.length() < 5)
+            {
+                throw runtime_error("Please enter password greater then 5");
+            }
+            else
+            {
+                cout << "Password: " << password << endl;
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Exception: " << e.what() << endl;
+        }
+    }
+};
 int main()
 {
-
-    int array[] = {23, 43, 2, 43, 5423, 454, 34};
-    int n = sizeof(array) / sizeof(array[0]);
+    Exception e1;
+    e1.invalid_input();
+    // e1.negitive_sqrt();
+    // e1.divideByZero();
 }
