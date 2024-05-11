@@ -562,6 +562,8 @@
 #include <iostream>
 #include <stdexcept>
 #include <cmath>
+#include <string>
+#include <fstream>
 using namespace std;
 
 class Exception
@@ -639,11 +641,99 @@ public:
             cout << "Exception: " << e.what() << endl;
         }
     }
+
+    int file_io()
+    {
+        cout << "Enter the fileName: ";
+        string fileName;
+        cin >> fileName;
+
+        try
+        {
+            ifstream file(fileName);
+            if (!file.is_open())
+            {
+                throw runtime_error("The fileName was not found");
+            }
+            else
+            {
+                string contents;
+                while (getline(file, contents))
+                {
+                    cout << contents << endl;
+                }
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Exception: " << e.what() << endl;
+        }
+    }
+
+    int convertToString()
+    {
+        cout << "Enter a string: ";
+        string s;
+        cin >> s;
+        try
+        {
+            int result = stoi(s);
+            cout << result << endl;
+        }
+        catch (const invalid_argument &e)
+        {
+            cout << "Invalid arugment" << e.what() << endl;
+        }
+        catch (const out_of_range &e)
+        {
+            cout << "Out of range: " << e.what() << endl;
+        }
+        catch (...)
+        {
+            cout << "Unexpected error occur " << endl;
+        }
+    }
+
+    int index_out_of_range()
+    {
+        int n = 6;
+        int array[6] = {12, 3, 43, 2343, 54, 34};
+
+        cout
+            << "Enter the index: ";
+        int index;
+        cin >> index;
+
+        try
+        {
+            if (index > n)
+            {
+                throw runtime_error("THE INDEX WAS OUT OF RANGE");
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (index == i)
+                    {
+                        cout << array[i] << endl;
+                    }
+                }
+            }
+        }
+        catch (runtime_error &e)
+        {
+            cout << "Exception: " << e.what() << endl;
+        }
+    }
 };
 int main()
 {
     Exception e1;
-    e1.invalid_input();
+    // e1.convertToString();
+    e1.index_out_of_range();
+    // e1.file_io();
+    // e1.invalid_input();
     // e1.negitive_sqrt();
     // e1.divideByZero();
 }
