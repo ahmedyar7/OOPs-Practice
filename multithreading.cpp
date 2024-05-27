@@ -1,31 +1,26 @@
 #include <iostream>
 #include <thread>
-#include <atomic>
+using namespace std;
 
-std::atomic<int> counter(0);
-
-void incrementCounter()
-{
-    counter++;
-}
+void function_1();
+void function_2();
 
 int main()
 {
-    // Create multiple threads to increment the counter
-    std::thread threads[5];
-    for (int i = 0; i < 5; ++i)
-    {
-        threads[i] = std::thread(incrementCounter);
-    }
+    thread th1(function_1);
+    thread th2(function_2);
 
-    // Join all the threads to wait for their completion
-    for (int i = 0; i < 5; ++i)
-    {
-        threads[i].join();
-    }
-
-    // Output the final value of the counter
-    std::cout << "Final value of counter: " << counter << std::endl;
+    th1.join();
+    th2.join();
 
     return 0;
+}
+
+void function_1()
+{
+    cout << "This is Function 1" << endl;
+}
+void function_2()
+{
+    cout << "This is function 2" << endl;
 }

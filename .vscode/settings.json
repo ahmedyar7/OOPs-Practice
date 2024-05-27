@@ -43,5 +43,6 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "thread": "cpp"
-    }
+    },
+    "git.decorations.enabled": true
 }
