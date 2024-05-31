@@ -43,6 +43,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 class FileHanling
@@ -86,15 +87,148 @@ public:
             cout << string << endl;
         }
     }
+
+    void numberInput()
+    {
+        ofstream out("samplefile.txt");
+        for (int i = 0; i <= 10; i++)
+        {
+            out << i << endl;
+        }
+    }
+
+    void numberOutput()
+    {
+        ifstream input("samplefile.txt");
+        string i;
+        while (getline(input, i))
+        {
+            cout << i << endl;
+        }
+    }
+
+    void errorHandling()
+    {
+        string fileName;
+        cin >> fileName;
+        try
+        {
+            ifstream file(fileName);
+            if (!file.is_open())
+            {
+                throw runtime_error("This file donot exist");
+            }
+            else
+            {
+                string contents;
+                while (getline(file, contents))
+                {
+                    cout << contents;
+                }
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Error: " << e.what();
+        }
+    }
+
+    void appendingTofile()
+    {
+        ofstream file("samplefile.txt", ios::app);
+        file << "This is some additional text";
+    }
+};
+
+class QuestionPractice
+{
+public:
+    void solveEquation()
+    {
+        string fileName = "samplefile.txt";
+        string equation;
+        ifstream infile(fileName);
+
+        if (!infile)
+        {
+            cout << "Unable to open the file " << endl;
+        }
+
+        // Reading the Equation from the file
+        getline(infile, equation);
+        infile.close();
+
+        // Parsing the Equation:-
+
+        stringstream ss(equation);
+        double operand1, operand2;
+        char op;
+        ss >> operand1 >> op >> operand2;
+
+        double result;
+        bool validEquation = true;
+
+        // Solving the Equation;
+        switch (op)
+        {
+        case '+':
+            result = operand1 + operand2;
+            break;
+        case '-':
+            result = operand1 - operand2;
+            break;
+        case 'x':
+            result = operand1 * operand2;
+            break;
+        case '/':
+            try
+            {
+                if (operand2 != 0)
+                {
+                    result = operand1 / operand2;
+                }
+                else
+                {
+                    throw runtime_error("The Division is not Possible");
+                }
+            }
+            catch (exception &e)
+            {
+                cout << "Error: " << e.what() << endl;
+            }
+            break;
+
+        default:
+            cout << "The equation is invalid" << endl;
+            validEquation = false;
+        }
+        if (validEquation)
+        {
+            ofstream fileOut("samplefile.txt", ios::app);
+            if (!fileOut)
+            {
+                cout << "Unable to open the file" << endl;
+            }
+            fileOut << "Result: " << result << endl;
+            fileOut.close();
+        }
+    }
 };
 
 int main()
 {
-    FileHanling fh;
+    // FileHanling fh;
 
-    fh.mulitLineOutput();
+    QuestionPractice qp;
+    qp.solveEquation();
 
-    fh.multi_line_input();
+    // fh.numberInput();
+    // fh.numberOutput();
+    // fh.appendingTofile();
+
+    // fh.mulitLineOutput();
+
+    // fh.multi_line_input();
 
     // File Output:
     // fh.file_input();

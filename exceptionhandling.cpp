@@ -727,13 +727,77 @@ public:
         }
     }
 };
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
 int main()
 {
-    Exception e1;
-    // e1.convertToString();
-    e1.index_out_of_range();
-    // e1.file_io();
-    // e1.invalid_input();
-    // e1.negitive_sqrt();
-    // e1.divideByZero();
+    string filename = "samplefile.txt";
+    string equation;
+    ifstream inFile(filename);
+
+    if (!inFile)
+    {
+        cerr << "Unable to open file for reading" << endl;
+        return 1;
+    }
+
+    // Read the equation from the file
+    getline(inFile, equation);
+    inFile.close();
+
+    // Parse the equation
+    stringstream ss(equation);
+    double operand1, operand2;
+    char op;
+    ss >> operand1 >> op >> operand2;
+
+    double result;
+    bool validEquation = true;
+
+    // Solve the equation
+    switch (op)
+    {
+    case '+':
+        result = operand1 + operand2;
+        break;
+    case '-':
+        result = operand1 - operand2;
+        break;
+    case '*':
+        result = operand1 * operand2;
+        break;
+    case '/':
+        if (operand2 != 0)
+            result = operand1 / operand2;
+        else
+        {
+            cerr << "Division by zero error" << endl;
+            validEquation = false;
+        }
+        break;
+    default:
+        cerr << "Invalid operator" << endl;
+        validEquation = false;
+    }
+
+    // Write the result back to the file if the equation is valid
+    if (validEquation)
+    {
+        ofstream outFile(filename, ios::app); // Open in append mode
+        if (!outFile)
+        {
+            cerr << "Unable to open file for writing" << endl;
+            return 1;
+        }
+
+        outFile << "\nResult: " << result << endl;
+        outFile.close();
+    }
+
+    return 0;
 }
