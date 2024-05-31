@@ -213,6 +213,73 @@ public:
             fileOut.close();
         }
     }
+
+    void newEquation()
+    {
+        // Todo: Reading from the file.
+        ifstream equationFile("samplefile.txt");
+        string equation;
+        if (!equationFile.is_open())
+        {
+            cout << "Could not open the file for reading " << endl;
+        }
+        getline(equationFile, equation);
+        equationFile.close();
+
+        bool validEqution = true;
+
+        // todo: Parsing the file throught sstream class
+        double operand1,
+            operand2, result;
+        char ops;
+
+        stringstream ss(equation);
+        ss >> operand1 >> ops >> operand2;
+
+        // todo make the equation
+        if (ops == '+')
+        {
+            result = operand1 + operand2;
+        }
+        else if (ops == '-')
+        {
+            result = operand1 - operand2;
+        }
+        else if (ops == 'x' || ops == 'X' || ops == '*')
+        {
+            result = operand1 * operand2;
+        }
+        else if (ops == '/')
+        {
+            try
+            {
+                if (operand2 != 0)
+                {
+                    result = operand1 / operand2;
+                }
+                else
+                {
+                    throw runtime_error("Not possible operation");
+                }
+            }
+            catch (exception &e)
+            {
+                cout << "Error: " << e.what() << endl;
+            }
+        }
+        else
+        {
+            cout << "Operation is invalid" << endl;
+            validEqution = false;
+        }
+        if (validEqution)
+        {
+            ofstream equationout("samplefile.txt", ios::app);
+            equationout << "Result:"
+                        << result << endl;
+            equationout.close();
+        }
+    }
 };
 
 int main()
@@ -220,7 +287,8 @@ int main()
     // FileHanling fh;
 
     QuestionPractice qp;
-    qp.solveEquation();
+    qp.newEquation();
+    // qp.solveEquation();
 
     // fh.numberInput();
     // fh.numberOutput();
