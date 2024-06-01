@@ -280,6 +280,61 @@ public:
             equationout.close();
         }
     }
+    void solvingEquation()
+    {
+        // TODO: Get the file reading
+        ifstream equation_File("samplefile.txt");
+        string equation;
+        while (getline(equation_File, equation))
+        {
+
+            bool isEquationValid = true;
+
+            // TODO: Parse the equation using the sstream object.
+            double operand1, operand2, result;
+            char operators;
+            stringstream ss(equation);
+            ss >> operand1 >> operators >> operand2;
+
+            // TODO: Giving calculation fnctionality.
+            if (operators == '+')
+            {
+                result = operand1 + operand2;
+            }
+            else if (operators == '-')
+            {
+                result = operand1 - operand2;
+            }
+            else if (operators == 'x' || operators == 'X' || operators == '*')
+            {
+                result = operand1 * operand2;
+            }
+            else if (operators == '/')
+            {
+                try
+                {
+                    if (operand2 != 0)
+                        result = operand1 / operand2;
+                    else
+                        throw runtime_error("Not possible");
+                }
+                catch (exception &e)
+                {
+                    cout << "Error: " << e.what();
+                }
+            }
+            else
+            {
+                isEquationValid = false;
+                cout << "Equation is invalid " << endl;
+            }
+            if (isEquationValid)
+            {
+                ofstream outfile("samplefile.txt", ios::app);
+                outfile << "Result " << result << endl;
+            }
+        }
+    }
 };
 
 int main()
@@ -287,7 +342,8 @@ int main()
     // FileHanling fh;
 
     QuestionPractice qp;
-    qp.newEquation();
+    // qp.solvingEquation();
+    // qp.newEquation();
     // qp.solveEquation();
 
     // fh.numberInput();
