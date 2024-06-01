@@ -44,6 +44,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <vector>
 using namespace std;
 
 class FileHanling
@@ -335,6 +336,73 @@ public:
             }
         }
     }
+    // ? 5. Write a program in C++ to read the numbers(45, 56, 12, 8, 5, 98) from a file, and find the largest number in the file, and then write the answer back to the same file ?
+    void largest_Number()
+    {
+        // TODO: Reading from the file:
+        ifstream inputFile("samplefile.txt");
+        if (!inputFile.is_open())
+        {
+            cout << "Couldn't Read the file" << endl;
+        }
+
+        // TODO:Entering the number to the file.
+        vector<int> inputVector;
+        int num;
+        while (inputFile >> num)
+        {
+            inputVector.push_back(num);
+        }
+        inputFile.close();
+        if (inputVector.empty())
+            cout << "No number is to be Found \n";
+
+        int largest = inputVector[0];
+        for (int i = 0; i < inputVector.size(); i++)
+        {
+            if (inputVector[i] > largest)
+            {
+                largest = inputVector[i];
+            }
+        }
+        // TODO: Writing to the file:
+        ofstream writeFile("samplefile.txt");
+        if (!writeFile)
+            cout << "Could not write to the file" << endl;
+        writeFile << "Result: " << largest << endl;
+    }
+
+    void findLargestNumber()
+    {
+        // TODO: Write the answer to the file
+        // NOTE: // ! File handling exception
+
+        ifstream numberFile("samplefile.txt");
+        if (!numberFile.is_open())
+            cout << "Could not open file for reading" << endl;
+
+        vector<int> numbers;
+        int i;
+        while (numberFile >> i)
+        {
+            numbers.push_back(i);
+        }
+        if (numbers.empty())
+            cout << "No number to be found" << endl;
+        int largestNumber = numbers[0];
+        for (int i = 0; i < numbers.size(); i++)
+        {
+            if (numbers[i] > largestNumber)
+            {
+                largestNumber = numbers[i];
+            }
+        }
+
+        ofstream writeFile("samplefile.txt", ios::app);
+        if (!writeFile)
+            cout << "Couldnot open the file" << endl;
+        writeFile << "Result = " << largestNumber << endl;
+    }
 };
 
 int main()
@@ -342,6 +410,8 @@ int main()
     // FileHanling fh;
 
     QuestionPractice qp;
+    qp.findLargestNumber();
+    // qp.largest_Number();
     // qp.solvingEquation();
     // qp.newEquation();
     // qp.solveEquation();
