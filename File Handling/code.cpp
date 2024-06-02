@@ -38,9 +38,76 @@ public:
         else
             outFile << "\nResult: " << result << endl;
     }
+    void largestNumbeInFile()
+    {
+        ifstream inFile("file.txt");
+        if (!inFile.is_open())
+            cout << "Could not open the file" << endl;
+        int i;
+        vector<int> numbers;
+        while (inFile >> i)
+        {
+            numbers.push_back(i);
+        }
+        inFile.close();
+        int largestNumber = numbers[0];
+        for (int i = 0; i < numbers.size(); i++)
+        {
+            if (largestNumber < numbers[i])
+            {
+                largestNumber = numbers[i];
+            }
+        }
+        ofstream outFile("file.txt", ios::app);
+        if (!outFile.is_open())
+        {
+            cout << "Could not open the file " << endl;
+        }
+        else
+            outFile << "\nResult: " << largestNumber << endl;
+        outFile.close();
+    }
+
+    void sortedFile()
+    {
+        ifstream inFile("file.txt");
+        if (!inFile.is_open())
+            cout << "Could not open the file" << endl;
+
+        int i;
+        vector<int> vec;
+        while (inFile >> i)
+        {
+            vec.push_back(i);
+        }
+        inFile.close();
+        for (int i = 0; i < vec.size() - 1; i++)
+        {
+            for (int j = i + 1; j < vec.size(); j++)
+            {
+                if (vec[j] < vec[i])
+                {
+                    int swp = vec[j];
+                    vec[j] = vec[i];
+                    vec[i] = swp;
+                }
+            }
+        }
+        ofstream outFile("file.txt", ios::app);
+        if (!outFile.is_open())
+            cout << "Couldn't open the file " << endl;
+
+        outFile << "Sorted :\n";
+        for (int i = 0; i < vec.size(); i++)
+        {
+            outFile << " " << vec[i];
+        }
+    }
 };
 int main()
 {
     QuestionPractice q;
-    q.calculations();
+    q.sortedFile();
+    // q.largestNumbeInFile();
+    // q.calculations();
 }
