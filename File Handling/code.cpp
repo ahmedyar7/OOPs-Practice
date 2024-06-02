@@ -103,11 +103,35 @@ public:
             outFile << " " << vec[i];
         }
     }
+
+    void average()
+    {
+        ifstream inFile("file.txt");
+        if (!inFile.is_open())
+            cout << "Could not open the file" << endl;
+        int i;
+        vector<int> vec;
+        while (inFile >> i)
+            vec.push_back(i);
+
+        int sum = 0;
+        for (int i = 0; i < vec.size(); i++)
+        {
+            sum += vec[i];
+        }
+        double average = sum / vec.size();
+        ofstream outFile("file.txt", ios::app);
+        outFile << endl;
+        outFile << "Average: " << average << endl;
+        outFile << "Average: " << vec.size() << endl;
+        outFile << "sum: " << sum << endl;
+    }
 };
 int main()
 {
     QuestionPractice q;
-    q.sortedFile();
+    q.average();
+    // q.sortedFile();
     // q.largestNumbeInFile();
     // q.calculations();
 }
