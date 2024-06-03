@@ -126,11 +126,49 @@ public:
         outFile << "Average: " << vec.size() << endl;
         outFile << "sum: " << sum << endl;
     }
+
+    void numOfCharacterWords()
+    {
+        ifstream inFile("file.txt");
+        if (!inFile.is_open())
+        {
+            cout << "Coulnot open the file";
+        }
+        string line;
+        int word_count = 0;
+        int char_count = 0;
+        while (getline(inFile, line))
+        {
+            bool isWord = false;
+            for (char c : line)
+            {
+                if (isspace(c))
+                {
+                    isWord = false;
+                    word_count++;
+                }
+                else
+                {
+                    char_count++;
+                    isWord = true;
+                }
+            }
+            if (isWord)
+            {
+                word_count++;
+            }
+        }
+        ofstream outFile("file.txt");
+        outFile << endl;
+        outFile << "Word Count " << word_count << endl;
+        outFile << "Char Count " << char_count << endl;
+    }
 };
 int main()
 {
     QuestionPractice q;
-    q.average();
+    q.numOfCharacterWords();
+    // q.average();
     // q.sortedFile();
     // q.largestNumbeInFile();
     // q.calculations();
