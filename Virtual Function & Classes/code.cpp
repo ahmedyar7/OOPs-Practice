@@ -66,20 +66,77 @@ public:
     }
 };
 
+// # --------------------------------------                Virtual Classes                 ------------------------------------------------------------------
+
+class Person
+{
+private:
+    string name;
+    int age;
+
+public:
+    Person(string name, int age)
+    {
+        this->name = name;
+        this->age = age;
+    }
+
+    void displayPersonInfo()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+class Student : virtual public Person
+{
+private:
+    string major;
+
+public:
+    Student(const string &name, const int &age, const string &major) : Person(name, age)
+    {
+        this->major = major;
+    }
+    void displayStudentInfo()
+    {
+        cout << "Major: " << major << endl;
+    }
+};
+
+class Employee : virtual public Person
+{
+private:
+    string jobTitle;
+
+public:
+    Employee(const string &name, const int &age, const string &jobTitle) : Person(name, age)
+    {
+        this->jobTitle = jobTitle;
+    }
+
+    void displayEmployeeInfo()
+    {
+        cout << "JobTitle: " << jobTitle << endl;
+    }
+};
+
+class WorkingStudent : public Student, public Employee
+{
+private:
+public:
+    WorkingStudent(const string &name, const int &age, const string &major, const string &jobTitle) : Person(name, age), Student(name, age, major), Employee(name, age, jobTitle) {}
+
+    void displayWorkingStudentInfo()
+    {
+        displayPersonInfo();
+        displayStudentInfo();
+        displayEmployeeInfo();
+    }
+};
+
 int main()
 {
-
-    Animal a1("Mammals", 14);
-
-    a1.details();
-    a1.show();
-
-    Cat c1("PersianCat", 43, "Ushna");
-    c1.details();
-    c1.show();
-    // Base b1;
-    // b1.show(); // Base class function called
-
-    // Derived d1;
-    // d1.show(); // Derived class function called ;
+    WorkingStudent ws("Ahmed", 19, "ComputerScience", "Intern");
+    ws.displayWorkingStudentInfo();
 }
