@@ -249,3 +249,56 @@ public:
         }
     }
 };
+
+class Practice
+{
+public:
+    // ?Create a program that reads data from a file and calculates the average of the numbers in the file. Implement exception handling to deal with file not found or invalid data in the file.
+
+    void average()
+    {
+        // Reading the file
+        ifstream inFile("file.txt");
+        try
+        {
+            if (!inFile.is_open())
+            {
+                throw runtime_error("This file Donot Exist");
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Error: " << e.what() << endl;
+        }
+        int num;
+        vector<int> numbers;
+        while (inFile >> num)
+        {
+            numbers.push_back(num);
+        }
+        inFile.close();
+        try
+        {
+            if (numbers.empty())
+            {
+                throw runtime_error("The are no number \n");
+            }
+        }
+        catch (exception &e)
+        {
+            cout << "Error: " << e.what() << endl;
+        }
+
+        // Algorithm
+        double sum = 0;
+        for (int i = 0; i < numbers.size(); i++)
+        {
+            sum += numbers[i];
+        }
+        double avg = sum / numbers.size();
+
+        // Appendeing to the file
+        ofstream outFile("file.txt", ios::app);
+        outFile << "Result";
+    }
+};
