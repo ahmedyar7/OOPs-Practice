@@ -3,6 +3,7 @@
 #include <string>
 #include <stdexcept>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 class BankAccount
@@ -302,3 +303,77 @@ public:
         outFile << "Result";
     }
 };
+
+class Shape
+{
+public:
+    virtual void area() = 0;
+    // virtual ~Shape();
+};
+
+class Circle : public Shape
+{
+
+private:
+    double radius;
+
+public:
+    Circle(const double &radius)
+    {
+        if (radius < 0)
+        {
+            throw invalid_argument("The radius should be a positive number\n");
+        }
+        this->radius = radius;
+    }
+    void area() override
+    {
+        double area = 3.14 * radius * radius;
+        cout << "Area: " << area << endl;
+    }
+};
+
+class Rectangle : public Shape
+{
+private:
+    double length, width;
+
+public:
+    Rectangle(double length, double width)
+    {
+        if (length < 0.0 || width < 0.0)
+            throw invalid_argument("The Length or width cannot be negitive\n");
+
+        this->length = length;
+        this->width = width;
+    }
+
+    void area() override
+    {
+        double area = length * width;
+        cout << "Area: " << area << endl;
+    }
+};
+
+int main()
+{
+    try
+    {
+        Circle circle(0.99);
+        circle.area();
+    }
+    catch (const invalid_argument e1)
+    {
+        cout << "Error: " << e1.what();
+    }
+
+    try
+    {
+        Rectangle rect(12.0, 90.0);
+        rect.area();
+    }
+    catch (const invalid_argument e2)
+    {
+        cout << "Error: " << e2.what() << endl;
+    }
+}
