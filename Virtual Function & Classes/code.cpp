@@ -135,8 +135,25 @@ public:
     }
 };
 
+class PureVirtualClass
+{
+private:
+public:
+    virtual void show() = 0;
+};
+
+class DerivedVirtualClass : public PureVirtualClass
+{
+private:
+public:
+    void show() override
+    {
+        cout << "This is overriden virtual classes" << endl;
+    }
+};
+
 int main()
 {
-    WorkingStudent ws("Ahmed", 19, "ComputerScience", "Intern");
-    ws.displayWorkingStudentInfo();
+    DerivedVirtualClass cs;
+    cs.show();
 }
