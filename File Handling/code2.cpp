@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class FileHandling
@@ -248,11 +249,50 @@ public:
         outFile << "\nWord Count: " << word_count << endl;
         outFile << "Character Count: " << char_count << endl;
     }
+
+    void wordReverse()
+    {
+        ifstream inFile("file.txt");
+        string line;
+        getline(inFile, line);
+        stringstream ss(line);
+        string reversed_line;
+        while (ss >> line)
+        {
+            reverse(line.begin(), line.end());
+            reversed_line = line + " " + reversed_line;
+        }
+        ofstream outfile("file.txt", ios::app);
+        outfile << endl;
+        outfile << reversed_line;
+    }
+
+    void Eeverse()
+    {
+        ifstream infile("file.txt");
+        if (!infile.is_open())
+            cout << "Error: File Could'nt be found" << endl;
+        string line;
+        getline(infile, line);
+        stringstream ss(line);
+
+        string reversed_word;
+
+        while (ss >> line)
+        {
+            reverse(line.begin(), line.end());
+            reversed_word = line + " " + reversed_word;
+        }
+        ofstream outfile("file.txt", ios::app);
+        outfile << reversed_word << endl;
+    }
 };
 
 int main()
 {
     FileHandling fh;
+    fh.Eeverse();
+    // fh.wordReverse();
     // fh.wordcharcount();
     // fh.word_char_count();
     // fh.largestNumber();
