@@ -183,12 +183,79 @@ public:
         outFile << "\n"
                 << largest;
     }
+
+    void word_char_count()
+    {
+        ifstream inFile("file.txt");
+        if (!inFile.is_open())
+            cout << "Error: File Couldnot open ";
+        int word_count = 0;
+        int char_count = 0;
+
+        string line;
+        while (getline(inFile, line))
+        {
+            bool is_word = false;
+            for (char c : line)
+            {
+                if (isspace(c))
+                {
+                    is_word = true;
+                    word_count++;
+                }
+                else
+                {
+                    char_count++;
+                }
+            }
+            if (is_word)
+                word_count++;
+        }
+
+        ofstream outFile("file.txt", ios::app);
+        outFile << "\nWord Count " << word_count << endl;
+        outFile << "Character Count " << char_count << endl;
+    }
+
+    void wordcharcount()
+    {
+        ifstream inFile("file.txt");
+        int word_count = 0;
+        int char_count = 0;
+        string line;
+        while (getline(inFile, line))
+        {
+            bool is_word = false;
+            for (char c : line)
+            {
+                if (isspace(c))
+                {
+                    is_word = true;
+                    word_count++;
+                }
+                else
+                {
+                    char_count++;
+                }
+            }
+            if (is_word)
+            {
+                word_count++;
+            }
+        }
+
+        ofstream outFile("file.txt", ios::app);
+        outFile << "\nWord Count: " << word_count << endl;
+        outFile << "Character Count: " << char_count << endl;
+    }
 };
 
 int main()
 {
     FileHandling fh;
-    fh.largestNumber();
+    // fh.wordcharcount();
+    // fh.word_char_count();
+    // fh.largestNumber();
     // fh.solveEquation();
     // fh.sortDescend();
     // fh.sortAscend();
