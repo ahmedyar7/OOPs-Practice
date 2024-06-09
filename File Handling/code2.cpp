@@ -99,11 +99,97 @@ public:
             outFile << vec[i] << " ";
         }
     }
+
+    void solveEquation()
+    {
+        // Reading the file
+        ifstream inFile("file.txt");
+        try
+        {
+            if (!inFile.is_open())
+                throw runtime_error("The file could not open");
+        }
+        catch (const runtime_error &e)
+        {
+            cout << "Error: " << e.what();
+        }
+
+        // Getting the equation
+        string eq;
+        getline(inFile, eq);
+        int op1, op2, result = 0;
+        char ops;
+
+        stringstream ss(eq);
+        ss >> op1 >> ops >> op2;
+
+        // Solving the equation.
+        try
+        {
+            if (ops == '+')
+                result = op1 + op2;
+            else if (ops == '-')
+                result = op1 - op2;
+            else if (ops == 'X' || ops == 'x' || ops == '*')
+                result = op1 * op2;
+            else if (ops == '/' && op2 == 0)
+                throw runtime_error("This is not possible");
+            else
+                result = op1 / op2;
+        }
+        catch (runtime_error &e)
+        {
+            cout << "Error: " << e.what() << endl;
+        }
+
+        // Writing to the file:
+        ofstream outFile("file.txt", ios::app);
+        outFile << "\nResult: " << result;
+    }
+
+    void largestNumber()
+    {
+        // Reading the file
+        ifstream infile("file.txt");
+        try
+        {
+            if (!infile.is_open())
+                throw runtime_error("The file was not found");
+        }
+        catch (runtime_error e)
+        {
+            cout << "Error: " << e.what() << endl;
+        }
+        int num;
+        vector<int> numbers;
+        while (infile >> num)
+        {
+            numbers.push_back(num);
+        }
+        infile.close();
+
+        // Algorithm
+        int largest = numbers[0];
+        for (int i = 0; i < numbers.size(); i++)
+        {
+            if (numbers[i] > largest)
+            {
+                largest = numbers[i];
+            }
+        }
+
+        // Writing to the file
+        ofstream outFile("file.txt", ios::app);
+        outFile << "\n"
+                << largest;
+    }
 };
 
 int main()
 {
     FileHandling fh;
-    fh.sortDescend();
+    fh.largestNumber();
+    // fh.solveEquation();
+    // fh.sortDescend();
     // fh.sortAscend();
 }
